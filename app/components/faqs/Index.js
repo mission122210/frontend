@@ -56,7 +56,7 @@ const faqData = [
                 </p>
             </div>
         ),
-        category: "Job Role",
+        category: "Products Optimization Job Role",
     },
 
     {
@@ -104,7 +104,7 @@ const faqData = [
                 </p>
             </div>
         ),
-        category: "Earnings & Commission",
+        category: "Salary & Commission",
     },
 
     {
@@ -298,7 +298,7 @@ const faqData = [
                 </p>
             </div>
         ),
-        category: "Orders & Earnings",
+        category: "Lucky Orders & Earnings",
     },
 ]
 
