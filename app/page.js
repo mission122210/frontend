@@ -142,7 +142,6 @@ export default function FAQPage() {
           </div>
         </div>
 
-
         {/* FAQ Section */}
         <Faqs />
 
