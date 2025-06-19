@@ -3,9 +3,8 @@
 import { useState, useEffect, useRef } from "react"
 import React from 'react'
 import { X, Send, Headphones } from "lucide-react"
-import io from "socket.io-client" // 👈 import socket.io-client
 
-const socket = io("http://localhost:3001") // 👈 replace with your backend later
+
 
 const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
     const [messages, setMessages] = useState([
@@ -17,8 +16,14 @@ const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
             name: "Nexxen Bot",
         },
     ])
+
     const [newMessage, setNewMessage] = useState("")
+    const [isTyping, setIsTyping] = useState(false)
     const messagesEndRef = useRef(null)
+
+    const agentResponses = [
+        `Thank you for reaching out.\n\nAll our agents are currently assisting other customers, so response times may be slightly delayed.\n\nFor a faster response, we recommend messaging Nexxen Customer Support directly on WhatsApp using the number below:\n\n📱 ${phone}\n\nWe appreciate your patience and look forward to assisting you shortly.`
+    ];
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -27,25 +32,6 @@ const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
     useEffect(() => {
         scrollToBottom()
     }, [messages])
-
-    // 👇 Setup socket listener for receiving messages
-    useEffect(() => {
-        socket.on("receive_message", (data) => {
-            setMessages(prev => [
-                ...prev,
-                {
-                    id: prev.length + 1,
-                    text: data.text,
-                    sender: "user", // assuming sender is another user
-                    time: new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
-                }
-            ])
-        })
-
-        return () => {
-            socket.off("receive_message") // cleanup
-        }
-    }, [])
 
     const sendMessage = () => {
         if (newMessage.trim()) {
@@ -58,9 +44,21 @@ const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
 
             setMessages([...messages, userMessage])
             setNewMessage("")
+            setIsTyping(true)
 
-            // 👇 Emit to socket server
-            socket.emit("send_message", userMessage)
+            // Simulate agent typing and response
+            setTimeout(() => {
+                setIsTyping(false)
+                const randomResponse = agentResponses[Math.floor(Math.random() * agentResponses.length)]
+                const agentResponse = {
+                    id: messages.length + 2,
+                    text: randomResponse,
+                    sender: "agent",
+                    time: new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
+                    name: "Nexxen Bot",
+                }
+                setMessages((prev) => [...prev, agentResponse])
+            }, 2000)
         }
     }
 
@@ -69,7 +67,7 @@ const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
             {isChatOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-end justify-end p-4 z-50">
                     <div className="bg-white rounded-t-3xl w-full max-w-md h-[600px] flex flex-col shadow-2xl animate-in slide-in-from-bottom-4 duration-300">
-                        {/* Header */}
+                        {/* Chat Header */}
                         <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-6 rounded-t-3xl flex justify-between items-center">
                             <div className="flex items-center space-x-4">
                                 <div className="bg-white bg-opacity-20 p-3 rounded-full">
@@ -113,10 +111,28 @@ const Index = ({ isChatOpen, setIsChatOpen, phone }) => {
                                     </div>
                                 </div>
                             ))}
+
+                            {isTyping && (
+                                <div className="flex justify-start">
+                                    <div className="bg-white rounded-2xl px-4 py-3 shadow-sm border border-gray-200">
+                                        <div className="flex space-x-1">
+                                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                                            <div
+                                                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                                style={{ animationDelay: "0.1s" }}
+                                            ></div>
+                                            <div
+                                                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                                style={{ animationDelay: "0.2s" }}
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Input */}
+                        {/* Message Input */}
                         <div className="p-6 border-t border-gray-200 bg-white">
                             <div className="flex space-x-3">
                                 <input
