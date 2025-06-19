@@ -429,7 +429,69 @@ const faqData = [
             </div>
         ),
         category: "Why do I see Scam warning in Cash App?",
-    }
+    },
+    {
+        id: 17,
+        refId: "cashapp-bitcoin-buying-concerns",
+        question: "Why do I feel scared or suspicious when buying Bitcoin on Cash App? Is it a scam?",
+        answer: (
+          <div className="space-y-4 text-gray-700 leading-relaxed">
+            <p>
+              It's completely normal to feel a bit scared or suspicious when buying Bitcoin on Cash App — especially because there’s been a lot of news about Bitcoin scams lately.
+            </p>
+      
+            <p>
+              <span className="font-semibold text-emerald-700">But here’s the important truth:</span> Buying Bitcoin on Cash App is <strong>safe and secure</strong>. Cash App is a trusted digital wallet backed by Square, a publicly traded company used by millions worldwide.
+            </p>
+      
+            <p>
+              Bitcoin, like any financial asset, can sometimes feel confusing or risky because of its volatility and the complex technology behind it. But Cash App has built-in protections and strict security protocols to keep your funds safe.
+            </p>
+      
+            <p>
+              <span className="font-semibold">Here are some strong reasons to trust the process:</span>
+            </p>
+      
+            <ul className="list-disc pl-6 space-y-1">
+              <li>✅ Cash App uses industry-standard encryption to protect your transactions and data.</li>
+              <li>✅ They comply with strict financial regulations and anti-fraud systems to detect suspicious activity.</li>
+              <li>✅ Your Bitcoin purchase is recorded on the blockchain — a public, transparent ledger that anyone can verify.</li>
+              <li>✅ Millions of users worldwide have safely bought and sold Bitcoin through Cash App with no issues.</li>
+            </ul>
+      
+            <p>
+              If you ever feel unsure, take a moment to double-check transaction details and confirm addresses exactly. And remember, your trainer and Nexxen support are here to guide you step-by-step.
+            </p>
+      
+            <p>
+              <span className="font-semibold text-emerald-700">Pro tip:</span> You can also verify your Bitcoin holdings anytime using public blockchain explorers. This transparency is one of Bitcoin’s biggest strengths — you can prove your coins exist and belong to you.
+            </p>
+      
+            <p>
+              So, don’t let fear hold you back. Buying Bitcoin on Cash App is a safe, official process — just follow the instructions carefully, stay informed, and reach out for help whenever you need it.
+            </p>
+      
+            <p className="text-sm italic text-gray-600">
+              💡 For more reassurance, check out
+              <a
+                href="https://cash.app/help/us/en-us/6480-bitcoin-withdrawal-limitations"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 underline"
+              >
+                Cash App’s official Bitcoin buying guide
+              </a> 
+              and their security features.
+            </p>
+      
+            <p>
+              🧠 <span className="font-semibold text-emerald-700">Bottom line?</span> Your doubts are normal, but the system is designed to protect you. Trust the digital wallet, trust your trainer, and take one step at a time — you’ve got this!
+            </p>
+          </div>
+        ),
+        category: "Is buying Bitcoin on Cash App safe?",
+      }
+      
 
 ]
 
