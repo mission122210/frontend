@@ -300,6 +300,78 @@ const faqData = [
         ),
         category: "Lucky Orders & Earnings",
     },
+
+    {
+        id: 15,
+        refId: "initial-funds",
+        question: "Do I need to add any funds to my wallet before starting this job?",
+        answer: (
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                    One of the most common questions new users ask is:
+                    <span className="font-semibold text-emerald-700">“Why am I being asked to add money when I joined to earn, not spend?”</span>
+                    — and that’s a very valid concern. So let us explain clearly and honestly.
+                </p>
+
+                <p>
+                    The job involves completing <strong>3 daily sets</strong> after your training is over. These are simple tasks you’ll complete from your personal account, and your daily earnings for these sets (at <span className="text-emerald-700 font-semibold">VIP Level 1</span>) usually range between <strong>$180 to $200</strong>.
+                </p>
+
+                <p>
+                    But to complete those daily sets and withdraw your earnings, the system requires your account to maintain a <strong>minimum balance of $100</strong>.
+                    This is not a fee or a charge — it's just a working balance required by the platform to validate the completion of your sets.
+                </p>
+
+                <p>
+                    Now, here’s the good part:
+                    <span className="font-semibold text-emerald-700">New users are not expected to deposit this $100 upfront.</span>
+                    Instead, you go through a short training phase first. In this phase, a training account is created using your invitation code, and the profits from that account automatically credit <strong>15% directly into your own account.</strong>
+                </p>
+
+                <p>
+                    Most users easily earn more than $100 from this training — so they don’t have to add anything from their own pocket. Even if someone falls slightly short, it’s usually just a few bucks (around $15 to $19).
+                </p>
+
+                <p>
+                    <strong>And here’s the key point:</strong> The small amount you might add is:
+                </p>
+
+                <ul className="list-disc pl-6 space-y-1">
+                    <li>❌ Not an investment</li>
+                    <li>❌ Not a payment or a fee</li>
+                    <li>❌ Not something you’re giving to anyone</li>
+                    <li>✅ Just a temporary hold in your own account to meet the system’s balance criteria</li>
+                </ul>
+
+                <p>
+                    As soon as you complete your sets,
+                    <span className="font-semibold text-emerald-700">you withdraw not only your earnings but also these few bucks</span> — they’re never taken from you. You’re just holding them briefly, like moving money from one pocket to the other.
+                </p>
+
+                <p>
+                    💡 <span className="font-semibold text-emerald-700">So why is it worth it?</span>
+                </p>
+
+                <ul className="list-disc pl-6 space-y-1">
+                    <li>🚀 You start earning $180–$200 per day immediately after training.</li>
+                    <li>📈 You already earn during training without needing to add money.</li>
+                    <li>🔐 You’re always in control — nothing is ever taken from your account without your action.</li>
+                    <li>✅ It’s not a fee, it’s a tool to unlock your full earning potential.</li>
+                </ul>
+
+                <p>
+                    So don’t let a small temporary hold stop you from unlocking a real daily income.
+                    <strong className="text-emerald-700">It’s not a risk — it’s a step forward.</strong>
+                </p>
+
+                <p className="italic text-sm text-gray-600">
+                    Still confused? Don’t worry — your trainer should be there with you to guide you through every step, and you’ll never be alone in the process. Your success is our goal.
+                </p>
+            </div>
+        ),
+        category: "Do I need to add anything out of my own pocket?",
+    },
+
 ]
 
 const Index = () => {
