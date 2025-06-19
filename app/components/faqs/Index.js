@@ -428,7 +428,7 @@ const faqData = [
                 </p>
             </div>
         ),
-        category: "Cash App and Transactions",
+        category: "Why Do I see Scam warning in Cash App?",
     }
 
 ]
