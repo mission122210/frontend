@@ -372,6 +372,65 @@ const faqData = [
         category: "Do I need to add anything out of my own pocket?",
     },
 
+    {
+        id: 16,
+        refId: "cashapp-scam-warning",
+        question: "Why is Cash App showing warnings like “Scam Detected” when I try to send the first transaction?",
+        answer: (
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                    Great question — and you’re definitely not the only one who’s seen this.
+                    A lot of new users get worried when Cash App shows messages like
+                    <span className="font-semibold text-red-600">“Scam Detected”</span> or
+                    <span className="font-semibold text-red-600">“This looks suspicious”</span> on their first or second BTC transaction.
+                </p>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">But here’s the truth:</span>
+                    These warnings are <strong>completely normal</strong> — especially when you’re sending Bitcoin for the first time, or even using an address that’s not in your frequent list.
+                </p>
+
+                <p>
+                    Cash App is very protective of your funds — and that’s a good thing.
+                    Their system often flags even perfectly safe transactions just to make sure you double-check.
+                    In fact, even if you’re sending to your own friend or family, these warnings can still appear.
+                </p>
+
+                <p>
+                    So what should you do if you see this warning and the transaction won’t go through?
+                </p>
+
+                <ul className="list-disc pl-6 space-y-1">
+                    <li>✅ Don’t panic — this is routine.</li>
+                    <li>✅ Contact <strong>Nexxen Customer Support</strong> and tell them you need a <span className="font-semibold">new and fresh BTC deposit address</span>.</li>
+                    <li>✅ Once you receive the new address, try your transaction again using that one.</li>
+                    <li>✅ Even if you see the same warnings, go ahead — your transaction will process this time.</li>
+                </ul>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">Should you ignore the warning?</span>
+                    Yes — in this context, you can safely ignore it. You’re not sending money to a stranger; you’re completing a step your trainer has guided you through, using the official Nexxen deposit process.
+                </p>
+
+                <p>
+                    The Cash App warning is just automated — it doesn’t mean your transaction is unsafe. If anything ever goes wrong, your trainer and our team are here to assist.
+                </p>
+
+                <p className="text-sm italic text-gray-600">
+                    💡 If you’d still like additional reassurance, you can look up
+                    <a href="https://cash.app/help/us/en-us/6480-bitcoin-withdrawal-limitations" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Cash App’s official documentation</a>
+                    about how they monitor BTC transactions — they clearly mention that they may block or warn on certain transfers just as a precaution.
+                </p>
+
+                <p>
+                    🧠 Bottom line? <span className="font-semibold text-emerald-700">Trust your trainer, follow the official instructions, and stay calm.</span>
+                    These warnings are just digital speed bumps — they’re there to protect you, not to stop you.
+                </p>
+            </div>
+        ),
+        category: "Cash App and Transactions",
+    }
+
 ]
 
 const Index = () => {
