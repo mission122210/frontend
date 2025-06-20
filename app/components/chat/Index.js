@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react"
 import { X, Send, Headphones } from "lucide-react"
 import io from "socket.io-client"
 
+// https://backend-production-e070.up.railway.app
+// http://localhost:3001
 const socket = io("https://backend-production-e070.up.railway.app", {
   autoConnect: false,
   reconnection: false,
