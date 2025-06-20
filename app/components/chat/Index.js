@@ -161,71 +161,84 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
   // === Admin UI ===
   if (isAdmin) {
     return (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex z-50">
-        {/* Sidebar */}
-        <div className="bg-white w-64 p-4 overflow-auto">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold">Users</h3>
-            <button onClick={() => setIsChatOpen(false)}><X /></button>
-          </div>
-          {usersList.length === 0 && <p>No active users</p>}
-          <ul className="space-y-2">
-            {usersList.map((user) => (
-              <li
-                key={user}
-                className={`p-2 rounded cursor-pointer ${activeChatUser === user ? "bg-blue-100" : "hover:bg-gray-100"
-                  }`}
-                onClick={() => setActiveChatUser(user)}
-              >
-                {user}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="fixed inset-0 bg-black bg-opacity-80 flex z-50 text-white">
+  {/* Sidebar */}
+  <div className="bg-[#1e1e2f] w-72 p-5 overflow-auto shadow-lg border-r border-gray-700">
+    <div className="flex justify-between items-center mb-6">
+      <h3 className="text-xl font-semibold">Users</h3>
+      <button onClick={() => setIsChatOpen(false)} className="text-gray-400 hover:text-white">
+        <X />
+      </button>
+    </div>
+    {usersList.length === 0 && <p className="text-gray-400">No active users</p>}
+    <ul className="space-y-3">
+      {usersList.map((user) => (
+        <li
+          key={user}
+          className={`p-3 rounded-md cursor-pointer transition-all ${
+            activeChatUser === user
+              ? "bg-blue-700 text-white"
+              : "hover:bg-gray-700 text-gray-300"
+          }`}
+          onClick={() => setActiveChatUser(user)}
+        >
+          {user}
+        </li>
+      ))}
+    </ul>
+  </div>
 
-        {/* Chat window */}
-        <div className="flex-1 flex flex-col bg-white">
-          <div className="bg-blue-600 text-white p-4 flex justify-between">
-            <h3>{activeChatUser ? `Chat with ${activeChatUser}` : "Select a user"}</h3>
-            <button onClick={() => setIsChatOpen(false)}><X /></button>
-          </div>
+  {/* Chat window */}
+  <div className="flex-1 flex flex-col bg-[#121212]">
+    <div className="bg-[#2d2d44] text-white p-4 flex justify-between items-center shadow-md">
+      <h3 className="text-lg font-medium">
+        {activeChatUser ? `Chat with ${activeChatUser}` : "Select a user"}
+      </h3>
+      <button onClick={() => setIsChatOpen(false)} className="text-gray-400 hover:text-white">
+        <X />
+      </button>
+    </div>
 
-          <div className="flex-1 overflow-y-auto p-4 space-y-3">
-            {activeChatUser &&
-              (messages[activeChatUser] || []).map((msg, idx) => (
-                <div
-                  key={idx}
-                  className={`max-w-xs p-3 rounded-lg ${msg.from === "001" ? "bg-blue-600 text-white ml-auto" : "bg-gray-200"
-                    }`}
-                >
-                  <div>{msg.text}</div>
-                  <div className="text-xs mt-1 text-right">{msg.time}</div>
-                </div>
-              ))}
-            <div ref={messagesEndRef} />
+    <div className="flex-1 overflow-y-auto p-5 space-y-4">
+      {activeChatUser &&
+        (messages[activeChatUser] || []).map((msg, idx) => (
+          <div
+            key={idx}
+            className={`max-w-md px-4 py-3 rounded-lg text-sm shadow ${
+              msg.from === "001"
+                ? "bg-blue-600 text-white ml-auto"
+                : "bg-gray-700 text-gray-200"
+            }`}
+          >
+            <div>{msg.text}</div>
+            <div className="text-xs mt-1 text-right text-gray-400">{msg.time}</div>
           </div>
+        ))}
+      <div ref={messagesEndRef} />
+    </div>
 
-          {activeChatUser && (
-            <div className="p-4 flex space-x-2 border-t">
-              <input
-                type="text"
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Type a message..."
-                className="flex-1 border rounded px-3 py-2"
-              />
-              <button
-                onClick={sendMessage}
-                disabled={!newMessage.trim()}
-                className="bg-blue-600 text-white px-4 rounded"
-              >
-                <Send />
-              </button>
-            </div>
-          )}
-        </div>
+    {activeChatUser && (
+      <div className="p-4 flex space-x-3 border-t border-gray-700 bg-[#1e1e2f]">
+        <input
+          type="text"
+          value={newMessage}
+          onChange={(e) => setNewMessage(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          placeholder="Type a message..."
+          className="flex-1 bg-[#2d2d44] text-white border border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+        <button
+          onClick={sendMessage}
+          disabled={!newMessage.trim()}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md transition-all disabled:opacity-50"
+        >
+          <Send />
+        </button>
       </div>
+    )}
+  </div>
+</div>
+
     )
   }
 
