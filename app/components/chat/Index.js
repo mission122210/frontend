@@ -6,8 +6,9 @@ import io from "socket.io-client"
 
 // https://backend-production-e070.up.railway.app
 // https://faq-backend-rk91.onrender.com/
+// https://foregoing-stealth-ozraraptor.glitch.me/
 // http://localhost:3001
-const socket = io("https://faq-backend-rk91.onrender.com", {
+const socket = io("https://foregoing-stealth-ozraraptor.glitch.me", {
   autoConnect: false,
   reconnection: false,
 })
