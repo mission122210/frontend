@@ -5,8 +5,9 @@ import { X, Send, Headphones } from "lucide-react"
 import io from "socket.io-client"
 
 // https://backend-production-e070.up.railway.app
+// https://faq-backend-rk91.onrender.com/
 // http://localhost:3001
-const socket = io("https://backend-production-e070.up.railway.app", {
+const socket = io("https://faq-backend-rk91.onrender.com", {
   autoConnect: false,
   reconnection: false,
 })
