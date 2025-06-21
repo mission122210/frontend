@@ -5,6 +5,8 @@ import { X, Send, Headphones, Users, MessageCircle, Phone, Sparkles, Crown, Zap 
 import { FaWhatsapp } from "react-icons/fa"
 import io from "socket.io-client"
 
+// http://localhost:3001
+// https://foregoing-stealth-ozraraptor.glitch.me
 const socket = io("https://foregoing-stealth-ozraraptor.glitch.me", {
   autoConnect: false,
   reconnection: false,
@@ -261,8 +263,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
                   <li
                     key={user}
                     className={`group relative p-4 rounded-xl cursor-pointer transition-all duration-200 ${activeChatUser === user
-                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
-                        : "hover:bg-white/10 text-gray-300 hover:text-white"
+                      ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
+                      : "hover:bg-white/10 text-gray-300 hover:text-white"
                       }`}
                     onClick={() => setActiveChatUser(user)}
                   >
@@ -331,8 +333,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
                   <div key={idx} className={`flex ${msg.from === "001" ? "justify-end" : "justify-start"}`}>
                     <div
                       className={`max-w-md px-6 py-4 rounded-2xl shadow-lg ${msg.from === "001"
-                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                          : "bg-white text-gray-800"
+                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                        : "bg-white text-gray-800"
                         }`}
                     >
                       <div className="font-medium">{msg.text}</div>
@@ -487,8 +489,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
               <div key={idx} className={`flex ${msg.from === "001" ? "justify-start" : "justify-end"}`}>
                 <div
                   className={`max-w-xs px-5 py-3 rounded-2xl shadow-lg ${msg.from === "001"
-                      ? "bg-white border border-gray-200 text-gray-800"
-                      : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
+                    ? "bg-white border border-gray-200 text-gray-800"
+                    : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
                     }`}
                 >
                   <div className="font-medium">{msg.text}</div>
@@ -543,7 +545,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
             </div>
 
             {/* Quick Actions */}
-            <div className="flex items-center justify-center mt-4 space-x-4">
+            {/* <div className="flex items-center justify-center mt-4 space-x-4">
               <a
                 href={`https://wa.me/${whatsappNumber}`}
                 target="_blank"
@@ -561,7 +563,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
                 <Phone size={16} />
                 <span>Call</span>
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
