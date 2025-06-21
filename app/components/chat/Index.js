@@ -49,8 +49,20 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
     socket.on("identity_error", (msg) => alert(msg))
 
     socket.on("update_users_list", (list) => {
-      setUsersList(list)
-    })
+      // Identify new users who just joined
+      const newUsers = list.filter((user) => !usersList.includes(user) && user !== "001");
+
+      // Send welcome message to each new user
+      newUsers.forEach((user) => {
+        socket.emit("send_message", {
+          to: user,
+          text: "👋 Welcome! How can we assist you today?",
+        });
+      });
+
+      setUsersList(list);
+    });
+
 
     socket.on("receive_message", ({ from, to, text, time }) => {
       const chatPartner = isAdmin ? (from === "001" || from === "admin" ? to : from) : "001"
@@ -543,27 +555,6 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
                 <Send size={20} />
               </button>
             </div>
-
-            {/* Quick Actions */}
-            {/* <div className="flex items-center justify-center mt-4 space-x-4">
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-green-600 hover:text-green-700 text-sm font-medium transition-colors duration-200"
-              >
-                <FaWhatsapp size={16} />
-                <span>WhatsApp</span>
-              </a>
-              <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-              <a
-                href={`tel:${phone}`}
-                className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors duration-200"
-              >
-                <Phone size={16} />
-                <span>Call</span>
-              </a>
-            </div> */}
           </div>
         </div>
       </div>
