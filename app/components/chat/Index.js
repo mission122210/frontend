@@ -6,7 +6,7 @@ import AskName from './askname/Index'
 import Admin from './admin/Index'
 import User from './user/Index'
 
-// http://localhost:3001
+// Socket server
 // https://foregoing-stealth-ozraraptor.glitch.me
 const socket = io("https://foregoing-stealth-ozraraptor.glitch.me", {
   autoConnect: false,
@@ -24,6 +24,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
   const [typingUsers, setTypingUsers] = useState({})
   const messagesEndRef = useRef(null)
 
+  // Connect / disconnect socket
   useEffect(() => {
     if (isChatOpen) socket.connect()
     else resetChat()
@@ -34,6 +35,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
     }
   }, [isChatOpen])
 
+  // Reset all chat state
   const resetChat = () => {
     setUsername("")
     setStep("askName")
@@ -45,34 +47,86 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
     setTypingUsers({})
   }
 
+  // Start chat - user/admin
+  const startChat = () => {
+    if (!username.trim()) return
+
+    if (username === "001") {
+      setIsAdmin(true)
+      socket.emit("set_identity", { name: "001" })
+    } else {
+      socket.emit("set_identity", { name: username })
+    }
+
+    setStep("chat")
+  }
+
+  // Handle new message send
+  const sendMessage = () => {
+    if (!newMessage.trim()) return
+
+    const to = isAdmin ? activeChatUser : "001"
+    socket.emit("send_message", { to, text: newMessage })
+
+    setNewMessage("")
+    socket.emit("stop_typing", { to })
+  }
+
+  // Emit typing events
+  useEffect(() => {
+    const to = isAdmin ? activeChatUser : "001"
+    if (!to) return
+
+    if (newMessage.trim()) {
+      socket.emit("typing", { to })
+    } else {
+      socket.emit("stop_typing", { to })
+    }
+  }, [newMessage, activeChatUser])
+
+  // Scroll to latest message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages, activeChatUser])
+
+  // Receive all socket events
   useEffect(() => {
     socket.on("identity_ok", () => { })
     socket.on("identity_error", (msg) => alert(msg))
 
     socket.on("update_users_list", (list) => {
-      // Identify new users who just joined
-      const newUsers = list.filter((user) => !usersList.includes(user) && user !== "001");
+      const newUsers = list.filter((user) => !usersList.includes(user) && user !== "001")
 
-      // Send welcome message to each new user
       newUsers.forEach((user) => {
         socket.emit("send_message", {
           to: user,
           text: "👋 Welcome! How can we assist you today?",
-        });
-      });
+        })
+      })
 
-      setUsersList(list);
-    });
-
+      setUsersList(list)
+    })
 
     socket.on("receive_message", ({ from, to, text, time }) => {
-      const chatPartner = isAdmin ? (from === "001" || from === "admin" ? to : from) : "001"
+      const chatPartner = isAdmin
+        ? (from === "001" || from === "admin" ? to : from)
+        : "001"
+
+      const isChatOpenWithUser = isAdmin && activeChatUser === chatPartner
 
       setMessages((prev) => {
         const prevMsgs = prev[chatPartner] || []
         return {
           ...prev,
-          [chatPartner]: [...prevMsgs, { from, text, time }],
+          [chatPartner]: [
+            ...prevMsgs,
+            {
+              from,
+              text,
+              time,
+              seen: isChatOpenWithUser, // Mark seen only if chat is active
+            },
+          ],
         }
       })
     })
@@ -92,71 +146,74 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
     return () => {
       socket.off()
     }
-  }, [isAdmin])
+  }, [isAdmin, activeChatUser])
 
-  const startChat = () => {
-    if (!username.trim()) return
+  // Handle active chat change and mark messages seen
+  const handleSetActiveChatUser = (user) => {
+    setActiveChatUser(user)
 
-    if (username === "001") {
-      setIsAdmin(true)
-      socket.emit("set_identity", { name: "001" })
-    } else {
-      socket.emit("set_identity", { name: username })
-    }
+    setMessages((prev) => {
+      const updatedMessages = prev[user]?.map((msg) =>
+        msg.seen ? msg : { ...msg, seen: true }
+      ) || []
 
-    setStep("chat")
+      return {
+        ...prev,
+        [user]: updatedMessages,
+      }
+    })
   }
 
-  const sendMessage = () => {
-    if (!newMessage.trim()) return
+  // Calculate unseen message count for each user
+  const unseenCounts = {}
+  usersList.forEach((user) => {
+    unseenCounts[user] = messages[user]?.filter((msg) => !msg.seen).length || 0
+  })
 
-    const to = isAdmin ? activeChatUser : "001"
-    socket.emit("send_message", { to, text: newMessage })
-
-    setNewMessage("")
-    socket.emit("stop_typing", { to })
-  }
-
-  useEffect(() => {
-    const to = isAdmin ? activeChatUser : "001"
-    if (!to) return
-
-    if (newMessage.trim()) {
-      socket.emit("typing", { to })
-    } else {
-      socket.emit("stop_typing", { to })
-    }
-  }, [newMessage, activeChatUser])
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages, activeChatUser])
-
+  // UI Rendering
   if (!isChatOpen) return null
 
-  // Step 1: Enhanced Username Input
   if (step === "askName") {
     return (
-      <>
-        <AskName username={username} setUsername={setUsername} setIsChatOpen={setIsChatOpen} startChat={startChat} />
-      </>
+      <AskName
+        username={username}
+        setUsername={setUsername}
+        setIsChatOpen={setIsChatOpen}
+        startChat={startChat}
+      />
     )
   }
 
-  // === Enhanced Admin UI ===
   if (isAdmin) {
     return (
-      <>
-        <Admin messagesEndRef={messagesEndRef} sendMessage={sendMessage} newMessage={newMessage} setNewMessage={setNewMessage} setIsChatOpen={setIsChatOpen} usersList={usersList} setActiveChatUser={setActiveChatUser} activeChatUser={activeChatUser} typingUsers={typingUsers} messages={messages} />
-      </>
+      <Admin
+        messagesEndRef={messagesEndRef}
+        sendMessage={sendMessage}
+        newMessage={newMessage}
+        setNewMessage={setNewMessage}
+        setIsChatOpen={setIsChatOpen}
+        usersList={usersList}
+        setActiveChatUser={handleSetActiveChatUser}
+        activeChatUser={activeChatUser}
+        typingUsers={typingUsers}
+        messages={messages}
+        unseenCounts={unseenCounts} // 🔥 PASSING THIS TO Admin
+      />
     )
   }
 
-  // === Enhanced User UI ===
   return (
-    <>
-      <User username={username} setIsChatOpen={setIsChatOpen} phone={phone} messages={messages} typingUsers={typingUsers} messagesEndRef={messagesEndRef} newMessage={newMessage} setNewMessage={setNewMessage} sendMessage={sendMessage} />
-    </>
+    <User
+      username={username}
+      setIsChatOpen={setIsChatOpen}
+      phone={phone}
+      messages={messages}
+      typingUsers={typingUsers}
+      messagesEndRef={messagesEndRef}
+      newMessage={newMessage}
+      setNewMessage={setNewMessage}
+      sendMessage={sendMessage}
+    />
   )
 }
 
