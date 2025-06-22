@@ -302,7 +302,7 @@ const faqData = [
     },
 
     {
-        id: 15,
+        id: 16,
         refId: "initial-funds",
         question: "Do I need to add any funds to my wallet before starting this job?",
         answer: (
@@ -373,7 +373,7 @@ const faqData = [
     },
 
     {
-        id: 16,
+        id: 17,
         refId: "cashapp-scam-warning",
         question: "Why is Cash App showing warnings like “Scam Detected” when I try to send the first transaction?",
         answer: (
@@ -431,7 +431,7 @@ const faqData = [
         category: "Why do I see Scam warning in Cash App?",
     },
     {
-        id: 17,
+        id: 18,
         refId: "cashapp-bitcoin-buying-concerns",
         question: "Why do I feel scared or suspicious when buying Bitcoin on Cash App? Is it a scam?",
         answer: (
