@@ -7,7 +7,7 @@ import Image from "next/image"
 import Faqs from "@/app/components/faqs/Index"
 import ChatBox from "@/app/components/chat/Index"
 
-const phone = "+1 408-382-9385"
+const phone = "+1 408-409-9466"
 
 export default function FAQPage() {
   const [isChatOpen, setIsChatOpen] = useState(false)
