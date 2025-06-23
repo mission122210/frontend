@@ -494,8 +494,154 @@ const faqData = [
             </div>
         ),
         category: "Is buying Bitcoin on Cash App safe?",
-    }
+    },
+    {
+        id: 20,
+        refId: "trainer-cannot-help-minimum-balance",
+        question: "Can my trainer help me with the few dollars needed to complete the minimum balance or verification?",
+        answer: (
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                    It’s totally normal to wonder why your trainer can’t help you with the small amount needed to meet the minimum balance — especially when it’s just a few bucks. But there’s a very important reason behind this rule.
+                </p>
 
+                <p>
+                    <span className="font-semibold text-emerald-700">To be clear:</span> Trainers are <strong>strictly not allowed</strong> to assist with funds related to meeting the minimum balance requirement, even if it’s just a few dollars.
+                </p>
+
+                <p>
+                    That initial amount you add — often $10 to $20 — is more than just money. It’s a form of <strong>human verification</strong>. It proves that you’re a real person, that you’re genuinely ready to participate, and that you’re in control of your own payment method.
+                </p>
+
+                <p>
+                    <span className="font-semibold">Why is this so important?</span> Because in this line of work, human verification is a security requirement. It helps protect both you and the platform from fraud, automation, or unauthorized access.
+                </p>
+
+                <ul className="list-disc pl-6 space-y-1">
+                    <li>✅ It confirms you’re not using someone else’s identity or account.</li>
+                    <li>✅ It builds trust with the system and your training team.</li>
+                    <li>✅ It ensures all members take full responsibility for their participation.</li>
+                </ul>
+
+                <p>
+                    If a trainer were to lend or send you that amount — even with good intentions — it would bypass the verification process, which defeats the purpose. That’s why this rule exists and is non-negotiable.
+                </p>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">Bottom line:</span> Human verification is essential — and for that reason, <strong>you must personally fund the minimum balance requirement</strong>. Trainers are here to guide and support you, but they cannot handle or cover this step for you.
+                </p>
+
+                <p className="text-sm italic text-gray-600">
+                    💡 This policy keeps the system fair, secure, and trustworthy for everyone involved. Once you complete this step, your trainer will be fully ready to walk you through everything else.
+                </p>
+            </div>
+        ),
+        category: "Trainer policies and human verification",
+    },
+    {
+        id: 21,
+        refId: "no-money-hesitation-faq",
+        question: "What if I don’t even have a few dollars to get started? Is this job still for me?",
+        answer: (
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                    This is a question we hear a lot: <em>“I don’t even have a few bucks right now.”</em> And while it might sound like a simple excuse, we take it seriously — because it’s not really about the money. It’s about mindset, understanding, and belief in what’s possible.
+                </p>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">Let’s be honest:</span> It’s hard to believe that someone living in the U.S. truly can’t access a few dollars — even just temporarily. What’s more likely is that they’re unsure about this opportunity, they don’t yet trust the process, or they simply don’t realize how powerful this job can be financially.
+                </p>
+
+                <p>
+                    And that’s okay — we get it. Skepticism is normal at the start. But here’s what we want you to realize:
+                </p>
+
+                <ul className="list-disc pl-6 space-y-1">
+                    <li>💵 This is a real income opportunity with <strong>real earning potential</strong> — not just a side gig, but something that can genuinely impact your financial future.</li>
+                    <li>🚀 The moment you complete your setup, you could start seeing earnings as high as <strong>$200+ immediately</strong>, and that’s just the beginning.</li>
+                    <li>💼 You're not buying a product — you’re unlocking access to a skill-based system that rewards effort, consistency, and smart work.</li>
+                </ul>
+
+                <p>
+                    So when someone says, “I don’t have a few bucks,” what we really hear is, “I’m not convinced this is worth it yet.” And that’s exactly where we want to help shift your mindset.
+                </p>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">Think about it this way:</span> If you knew with confidence that putting in a small amount today would lead to $200 or more in your hands within days — wouldn’t you figure out a way to come up with that?
+                </p>
+
+                <p>
+                    Most people would. And many do. Because once you realize the value of what’s in front of you, that small amount stops looking like a burden — and starts looking like a doorway.
+                </p>
+
+                <p>
+                    <span className="font-semibold">Here’s the truth:</span> That $200+ is already waiting for you. It’s not a dream, it’s not hype — it’s just one step away. You just need to unlock it by completing this small but crucial setup.
+                </p>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">Bottom line:</span> Don’t let a few dollars today block hundreds — or even thousands — of dollars tomorrow. This is your chance to change your financial path. Be resourceful, stay committed, and trust the process. You’ll be amazed at what happens when you just take that first step.
+                </p>
+
+                <p className="text-sm italic text-gray-600">
+                    💡 Still unsure? Reach out to your trainer. They’re here to guide you, answer your questions, and help you get started the smart way.
+                </p>
+            </div>
+        ),
+        category: "What if I don’t even have a few dollars to get started? Is this job still for me?",
+    },
+
+    {
+        id: 22,
+        refId: "how-to-reset-task-access-remaining-sets",
+        question: "How do I reset my task and access the remaining sets?",
+        answer: (
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+                <p>
+                    If your task has been paused and you need to reset it to access the remaining sets, don’t worry — the process is easy and can be done in just a few steps, even if you’ve never used a digital wallet before.
+                </p>
+
+                <p>
+                    You’ll need to make a small crypto deposit (usually around <strong>$17 to $19</strong>) to restart your task. Here's exactly how to do it:
+                </p>
+
+                <ol className="list-decimal pl-6 space-y-2">
+                    <li>
+                        <span className="font-semibold">Buy crypto worth the required amount.</span> You can purchase <strong>Bitcoin (BTC)</strong>, <strong>Ethereum (ETH)</strong>, or <strong>USDT (Tether)</strong> — any one of these works. Use a digital wallet or platform like PayPal, Cash App, Binance, Coinbase, or Trust Wallet.
+                    </li>
+
+                    <li>
+                        <span className="font-semibold">Contact Nexxen customer service.</span> Tell them which crypto you bought, and they’ll give you the correct deposit address. For example, if you bought ETH, ask for the ETH deposit address.
+                    </li>
+
+                    <li>
+                        <span className="font-semibold">Send the crypto to the provided address.</span>
+                        Open your wallet or app, and send the amount you purchased to the deposit address. Make sure you're sending the right type of crypto to the right address.
+                    </li>
+
+                    <li>
+                        <span className="font-semibold">Save the transaction receipt.</span> Once your transaction is complete, take a screenshot or copy the transaction ID from your app.
+                    </li>
+
+                    <li>
+                        <span className="font-semibold">Send the receipt + your Nexxen username to customer service.</span> This helps verify your deposit and makes sure it’s added to your account.
+                    </li>
+
+                    <li>
+                        <span className="font-semibold">Wait for confirmation.</span> Once confirmed, your task will be reset and the remaining sets will be unlocked. You can now continue where you left off!
+                    </li>
+                </ol>
+
+                <p>
+                    <span className="font-semibold text-emerald-700">That’s it!</span> It’s a simple one-time step to move forward — and if you ever need help, Nexxen support is here for you.
+                </p>
+
+                <p className="text-sm italic text-gray-600">
+                    💡 Tip: If you’re not sure how to buy or send crypto, just let support know. They’ll walk you through it one step at a time.
+                </p>
+            </div>
+        ),
+        category: "How do I reset my task and access the remaining sets?",
+    },
 
 ]
 
