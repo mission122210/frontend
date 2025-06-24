@@ -2,6 +2,7 @@ import React from 'react'
 import { MessageCircle, Clock, Star, Users, Award, Sparkles } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
 import Image from "next/image"
+import Link from 'next/link'
 
 const Index = ({ phone, setIsChatOpen }) => {
     return (
@@ -13,7 +14,7 @@ const Index = ({ phone, setIsChatOpen }) => {
                         <div className="flex items-center relative">
                             {/* <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl blur opacity-20"></div> */}
                             <div className="relative bg-white p-2 rounded-xl ">
-                                <Image src="/logo.webp" alt="Nexxen Logo" width={120} height={40} className="h-12 w-auto" />
+                                <Link href="/"><Image src="/logo.webp" alt="Nexxen Logo" width={120} height={40} className="h-12 w-auto" /></Link>
                             </div>
                         </div>
                         <div className="hidden md:block">
