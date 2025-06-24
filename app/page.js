@@ -6,8 +6,7 @@ import Faqs from "@/app/components/faqs/Index"
 import ChatBox from "@/app/components/chat/Index"
 import Header from "@/app/components/header/Index"
 import Footer from "@/app/components/footer/Index"
-
-const phone = "+1 408-409-9466"
+import phone from "@/app/phone"
 
 export default function FAQPage() {
   const [isChatOpen, setIsChatOpen] = useState(false)
