@@ -5,6 +5,7 @@ import io from "socket.io-client"
 import AskName from './askname/Index'
 import Admin from './admin/Index'
 import User from './user/Index'
+import useOnlineUserManager from './useOnlineUserManager'
 
 // Socket server
 // https://foregoing-stealth-ozraraptor.glitch.me
@@ -23,6 +24,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
   const [newMessage, setNewMessage] = useState("")
   const [typingUsers, setTypingUsers] = useState({})
   const messagesEndRef = useRef(null)
+
+  const { userId, activeUsers } = useOnlineUserManager()
 
   // Connect / disconnect socket
   useEffect(() => {
@@ -198,6 +201,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
         typingUsers={typingUsers}
         messages={messages}
         unseenCounts={unseenCounts} // 🔥 PASSING THIS TO Admin
+        activeUsers={activeUsers}
       />
     )
   }

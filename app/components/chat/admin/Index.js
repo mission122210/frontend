@@ -13,7 +13,7 @@ const Index = ({
     sendMessage,
     messagesEndRef,
     unseenCounts,
-    onlineUsers
+    activeUsers
 }) => {
     return (
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex z-50">
@@ -53,7 +53,7 @@ const Index = ({
                         <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-xl border border-blue-500/30">
                             <div className="flex items-center space-x-2">
                                 <MessageCircle size={16} className="text-blue-400" />
-                                <span className="text-blue-300 text-sm font-medium">Online</span>
+                                <span className="text-blue-300 text-sm font-medium">Online</span> {activeUsers.length}
                             </div>
                             <div className="text-2xl font-bold text-white mt-1">
                                 <div className="flex items-center space-x-1">
@@ -86,16 +86,16 @@ const Index = ({
                                 <li
                                     key={user}
                                     className={`group relative p-4 rounded-xl cursor-pointer transition-all duration-200 ${activeChatUser === user
-                                            ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
-                                            : "hover:bg-white/10 text-gray-300 hover:text-white"
+                                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg"
+                                        : "hover:bg-white/10 text-gray-300 hover:text-white"
                                         }`}
                                     onClick={() => setActiveChatUser(user)}
                                 >
                                     <div className="flex items-center space-x-3">
                                         <div
                                             className={`w-10 h-10 rounded-full flex items-center justify-center ${activeChatUser === user
-                                                    ? "bg-white/20"
-                                                    : "bg-gradient-to-r from-blue-500 to-purple-500"
+                                                ? "bg-white/20"
+                                                : "bg-gradient-to-r from-blue-500 to-purple-500"
                                                 }`}
                                         >
                                             <span className="text-sm font-bold text-white">
@@ -171,8 +171,8 @@ const Index = ({
                                 <div key={idx} className={`flex ${msg.from === "001" ? "justify-end" : "justify-start"}`}>
                                     <div
                                         className={`max-w-md px-6 py-4 rounded-2xl shadow-lg ${msg.from === "001"
-                                                ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                                                : "bg-white text-gray-800"
+                                            ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                                            : "bg-white text-gray-800"
                                             }`}
                                     >
                                         <div className="font-medium">{msg.text}</div>
