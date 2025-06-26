@@ -7,6 +7,7 @@ import ChatBox from "@/app/components/chat/Index"
 import Header from "@/app/components/header/Index"
 import Footer from "@/app/components/footer/Index"
 import phone from "@/app/phone"
+import AdsenseAd from "./components/ads/test"
 
 export default function FAQPage() {
   const [isChatOpen, setIsChatOpen] = useState(false)
@@ -71,7 +72,7 @@ export default function FAQPage() {
             </div>
           </div>
         </div>
-
+        <AdsenseAd />
         {/* Enhanced Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="group relative">
