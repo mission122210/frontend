@@ -72,7 +72,7 @@ export default function FAQPage() {
             </div>
           </div>
         </div>
-        <AdsenseAd />
+        {/* <AdsenseAd /> */}
         {/* Enhanced Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           <div className="group relative">
