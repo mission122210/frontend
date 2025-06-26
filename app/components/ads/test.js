@@ -1,33 +1,40 @@
 // components/AdsenseAd.js
 'use client'
+import { useEffect, useRef } from 'react'
 
-import { useEffect } from 'react'
+export default function AdsenseAd() {
+  const adRef = useRef(false)
 
-const AdsenseAd = () => {
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
+    const loadAd = () => {
+      try {
         (window.adsbygoogle = window.adsbygoogle || []).push({})
+      } catch (e) {
+        console.error('Adsense error:', e)
+        setTimeout(loadAd, 500)
       }
-    } catch (e) {
-      console.error('Adsense Error:', e)
     }
+
+    if (!adRef.current) {
+      loadAd()
+      adRef.current = true
+    }
+    
+    // re-run on navigation if needed
+    window.addEventListener('pushAd', loadAd)
+    return () => window.removeEventListener('pushAd', loadAd)
   }, [])
 
   return (
-    <div style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <h2>Ads by google</h2>
+    <div className="text-center my-8">
       <ins
         className="adsbygoogle"
-        style={{ display: 'block', width: '100%', height: '280px' }}
-        data-ad-client="ca-pub-3940256099942544"
-data-ad-slot="6300978190"
-
+        style={{ display: 'block', width: '728px', height: '280px', margin: 'auto' }}
+        data-ad-client="ca-pub-1353425195701604"
+        data-ad-slot="5852860777"
         data-ad-format="auto"
         data-full-width-responsive="true"
-      ></ins>
+      />
     </div>
   )
 }
-
-export default AdsenseAd

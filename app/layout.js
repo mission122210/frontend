@@ -23,10 +23,9 @@ export default function RootLayout({ children }) {
       <head>
       <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-          data-ad-client="ca-pub-1353425195701604"
-          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1353425195701604"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
       </head>
       <body
