@@ -117,6 +117,9 @@ const Index = ({phone}) => {
               <Link href="/terms-conditions" className="text-gray-600 hover:text-purple-600 transition-colors duration-200 font-medium">
                 Terms of Service
               </Link>
+              <Link href="/select-wallet" className="text-gray-600 hover:text-purple-600 transition-colors duration-200 font-medium">
+                How to select wallet
+              </Link>
               <div className="flex items-center space-x-2 bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-2 rounded-full border border-emerald-200">
                 <FaWhatsapp size={16} className="text-emerald-600" />
                 <span className="text-gray-700 font-semibold">{phone}</span>
