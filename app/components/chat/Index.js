@@ -8,7 +8,8 @@ import User from './user/Index'
 
 // Socket server
 // https://foregoing-stealth-ozraraptor.glitch.me
-const socket = io("https://foregoing-stealth-ozraraptor.glitch.me", {
+// https://faq-backend-rk91.onrender.com/
+const socket = io("https://faq-backend-rk91.onrender.com", {
   autoConnect: false,
   reconnection: false,
 })
