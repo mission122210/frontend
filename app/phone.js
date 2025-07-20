@@ -1,2 +1,2 @@
-const phone = "+1 408-416-8585"
+const phone = "+1 206-396-8075"
 export default phone
