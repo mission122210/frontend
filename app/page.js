@@ -119,12 +119,7 @@ export default function FAQPage() {
         </div>
 
         {/* FAQ Section with Enhanced Container */}
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gradient-to-r from-purple-100 via-pink-50 to-cyan-50 rounded-3xl blur-xl opacity-50"></div>
-          <div className="relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-gray-200/50">
-            <Faqs />
-          </div>
-        </div>
+        <Faqs />
 
         {/* Enhanced Contact CTA */}
         <div className="mt-24">
