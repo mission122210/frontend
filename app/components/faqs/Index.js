@@ -2131,8 +2131,16 @@ const Index = () => {
     }, [openFAQ])
 
     const toggleFAQ = (index) => {
-        setOpenFAQ(openFAQ === index ? null : index)
-    }
+        setOpenFAQ((prevIndex) => (prevIndex === index ? null : index));
+
+        // Scroll to the top of the selected FAQ smoothly
+        const el = faqRefs.current[index];
+        if (el) {
+            setTimeout(() => {
+                el.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+            }, 100); // slight delay ensures expanded content does not shift scroll unexpectedly
+        }
+    };
 
     const handleCopyLink = (refId, index) => {
         const link = `${window.location.origin}${window.location.pathname}#${refId}`
@@ -2330,12 +2338,7 @@ const Index = () => {
     }
 
     return (
-        <div className="max-w-4xl mx-auto p-6 space-y-6">
-            {/* <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Frequently Asked Questions</h1>
-        <p className="text-gray-600">Get answers to common questions and see what others are saying</p>
-      </div> */}
-
+        <div className="space-y-6">
             {faqData.map((faq, index) => (
                 <div
                     key={faq.id}
