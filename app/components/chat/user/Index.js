@@ -1,10 +1,23 @@
-import React from 'react'
-import { X, Send, Headphones, MessageCircle, Zap } from "lucide-react"
+"use client"
+import { Minus, Send, Headphones, MessageCircle, Zap, Wifi, WifiOff } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
-import MessageTone from "./MessageTune";
+import MessageTone from "./MessageTune"
 
-const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messagesEndRef, newMessage, setNewMessage, sendMessage }) => {
+const Index = ({
+    username,
+    setIsChatOpen,
+    onMinimize,
+    phone,
+    messages,
+    typingUsers,
+    messagesEndRef,
+    newMessage,
+    setNewMessage,
+    sendMessage,
+    isConnected,
+}) => {
     const whatsappNumber = phone.replace(/\D/g, "")
+    const unseenMessages = (messages["001"] || []).filter((msg) => !msg.seen).length
 
     return (
         <>
@@ -13,7 +26,6 @@ const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messages
                 <div className="relative">
                     {/* Background decoration */}
                     <div className="absolute -inset-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-3xl blur-xl opacity-20"></div>
-
                     <div className="relative bg-white rounded-3xl w-full max-w-md h-[700px] flex flex-col shadow-2xl overflow-hidden">
                         {/* Enhanced Header */}
                         <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white p-6 relative overflow-hidden">
@@ -22,32 +34,45 @@ const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messages
                                 <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-16 -translate-y-16"></div>
                                 <div className="absolute bottom-0 right-0 w-24 h-24 bg-white rounded-full translate-x-12 translate-y-12"></div>
                             </div>
-
                             <div className="relative flex justify-between items-center">
                                 <div className="flex items-center space-x-4">
                                     <div className="relative">
                                         <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                                             <Headphones size={28} className="text-white" />
                                         </div>
-                                        <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-white flex items-center justify-center">
-                                            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                                        <div
+                                            className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-white flex items-center justify-center ${isConnected ? "bg-green-400" : "bg-red-400"}`}
+                                        >
+                                            <div className={`w-2 h-2 bg-white rounded-full ${isConnected ? "animate-pulse" : ""}`}></div>
                                         </div>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold">Customer Support</h3>
                                         <p className="text-emerald-100 text-sm">Chatting as {username}</p>
                                         <div className="flex items-center space-x-2 mt-1">
-                                            <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></div>
-                                            <span className="text-xs text-emerald-200">Typically replies in 2 minutes</span>
+                                            {isConnected ? (
+                                                <>
+                                                    <Wifi size={12} className="text-emerald-200" />
+                                                    <span className="text-xs text-emerald-200">Connected</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <WifiOff size={12} className="text-red-200" />
+                                                    <span className="text-xs text-red-200">Reconnecting...</span>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
-                                <button
-                                    onClick={() => setIsChatOpen(false)}
-                                    className="p-2 hover:bg-white/20 rounded-xl transition-all duration-200"
-                                >
-                                    <X size={24} />
-                                </button>
+                                <div className="flex items-center space-x-2">
+                                    <button
+                                        onClick={onMinimize}
+                                        className="p-2 hover:bg-white/20 rounded-xl transition-all duration-200"
+                                        title="Minimize Chat"
+                                    >
+                                        <Minus size={20} />
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -86,13 +111,12 @@ const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messages
                                     <p className="text-gray-600 text-sm">Send a message to get help from our support team</p>
                                 </div>
                             )}
-
                             {(messages["001"] || []).map((msg, idx) => (
                                 <div key={idx} className={`flex ${msg.from === "001" ? "justify-start" : "justify-end"}`}>
                                     <div
                                         className={`max-w-xs px-5 py-3 rounded-2xl shadow-lg ${msg.from === "001"
-                                            ? "bg-white border border-gray-200 text-gray-800"
-                                            : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
+                                                ? "bg-white border border-gray-200 text-gray-800"
+                                                : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
                                             }`}
                                     >
                                         <div className="font-medium">{msg.text}</div>
@@ -102,7 +126,6 @@ const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messages
                                     </div>
                                 </div>
                             ))}
-
                             {typingUsers["001"] && (
                                 <div className="flex justify-start">
                                     <div className="bg-white border border-gray-200 px-5 py-3 rounded-2xl shadow-lg">
@@ -134,17 +157,25 @@ const Index = ({ username, setIsChatOpen, phone, messages, typingUsers, messages
                                     value={newMessage}
                                     onChange={(e) => setNewMessage(e.target.value)}
                                     onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                                    placeholder="Type your message..."
-                                    className="flex-1 border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 rounded-2xl px-4 py-3 text-gray-800 placeholder-gray-400 transition-all duration-200 outline-none"
+                                    placeholder={isConnected ? "Type your message..." : "Reconnecting..."}
+                                    className="flex-1 border-2 border-gray-200 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 rounded-2xl px-4 py-3 text-gray-800 placeholder-gray-400 transition-all duration-200 outline-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                                    disabled={!isConnected}
                                 />
                                 <button
                                     onClick={sendMessage}
-                                    disabled={!newMessage.trim()}
+                                    disabled={!newMessage.trim() || !isConnected}
                                     className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:from-gray-300 disabled:to-gray-400 text-white px-6 py-3 rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
                                 >
                                     <Send size={20} />
                                 </button>
                             </div>
+                            {!isConnected && (
+                                <div className="mt-2 text-center">
+                                    <span className="text-xs text-orange-600 bg-orange-100 px-3 py-1 rounded-full">
+                                        Connection lost. Attempting to reconnect...
+                                    </span>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

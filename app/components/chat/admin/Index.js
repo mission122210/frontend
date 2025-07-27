@@ -1,8 +1,9 @@
-import React from 'react'
-import { X, Send, Users, MessageCircle, Crown } from "lucide-react"
+"use client"
+import { X, Send, Users, MessageCircle, Crown, Minus, UserX, Wifi, WifiOff } from "lucide-react"
 
 const Index = ({
     setIsChatOpen,
+    onMinimize,
     usersList,
     setActiveChatUser,
     activeChatUser,
@@ -13,14 +14,13 @@ const Index = ({
     sendMessage,
     messagesEndRef,
     unseenCounts,
-    onlineUsers
+    disconnectUser,
+    isConnected,
 }) => {
     return (
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex z-50">
-
             {/* Sidebar */}
             <div className="bg-gradient-to-b from-slate-800 to-slate-900 w-80 border-r border-purple-500/20 shadow-2xl">
-
                 {/* Header */}
                 <div className="p-6 border-b border-purple-500/20">
                     <div className="flex justify-between items-center mb-4">
@@ -30,17 +30,38 @@ const Index = ({
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold text-white">Admin Panel</h3>
-                                <p className="text-purple-300 text-sm">Live Chat Management</p>
+                                <div className="flex items-center space-x-2 text-sm">
+                                    {isConnected ? (
+                                        <>
+                                            <Wifi size={12} className="text-green-400" />
+                                            <span className="text-green-400">Connected</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <WifiOff size={12} className="text-red-400" />
+                                            <span className="text-red-400">Disconnected</span>
+                                        </>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                        <button
-                            onClick={() => setIsChatOpen(false)}
-                            className="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
-                        >
-                            <X size={20} />
-                        </button>
+                        <div className="flex items-center space-x-2">
+                            <button
+                                onClick={onMinimize}
+                                className="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
+                                title="Minimize"
+                            >
+                                <Minus size={20} />
+                            </button>
+                            <button
+                                onClick={setIsChatOpen}
+                                className="text-gray-400 hover:text-red-400 p-2 hover:bg-red-500/10 rounded-lg transition-all duration-200"
+                                title="Close Admin Panel"
+                            >
+                                <X size={20} />
+                            </button>
+                        </div>
                     </div>
-
                     {/* Stats */}
                     <div className="grid grid-cols-2 gap-3">
                         <div className="bg-gradient-to-r from-emerald-500/20 to-teal-500/20 p-3 rounded-xl border border-emerald-500/30">
@@ -53,25 +74,25 @@ const Index = ({
                         <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 p-3 rounded-xl border border-blue-500/30">
                             <div className="flex items-center space-x-2">
                                 <MessageCircle size={16} className="text-blue-400" />
-                                <span className="text-blue-300 text-sm font-medium">Online</span>
+                                <span className="text-blue-300 text-sm font-medium">Status</span>
                             </div>
                             <div className="text-2xl font-bold text-white mt-1">
                                 <div className="flex items-center space-x-1">
-                                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                                    <span className="text-sm">Live</span>
+                                    <div
+                                        className={`w-2 h-2 rounded-full ${isConnected ? "bg-green-400 animate-pulse" : "bg-red-400"}`}
+                                    ></div>
+                                    <span className="text-sm">{isConnected ? "Live" : "Offline"}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 {/* Users List */}
                 <div className="p-6 overflow-y-auto space-y-2">
                     <h4 className="text-white font-semibold mb-4 flex items-center space-x-2">
                         <Users size={18} />
                         <span>Active Conversations</span>
                     </h4>
-
                     {usersList.length === 0 ? (
                         <div className="text-center py-8">
                             <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -93,28 +114,36 @@ const Index = ({
                                 >
                                     <div className="flex items-center space-x-3">
                                         <div
-                                            className={`w-10 h-10 rounded-full flex items-center justify-center ${activeChatUser === user
-                                                    ? "bg-white/20"
-                                                    : "bg-gradient-to-r from-blue-500 to-purple-500"
+                                            className={`w-10 h-10 rounded-full flex items-center justify-center ${activeChatUser === user ? "bg-white/20" : "bg-gradient-to-r from-blue-500 to-purple-500"
                                                 }`}
                                         >
-                                            <span className="text-sm font-bold text-white">
-                                                {user.charAt(0).toUpperCase()}
-                                            </span>
+                                            <span className="text-sm font-bold text-white">{user.charAt(0).toUpperCase()}</span>
                                         </div>
                                         <div className="flex-1">
                                             <div className="font-medium">{user}</div>
-                                            <div className="text-xs opacity-75">
-                                                {typingUsers[user] ? "Typing..." : "Online"}
-                                            </div>
+                                            <div className="text-xs opacity-75">{typingUsers[user] ? "Typing..." : "Online"}</div>
                                         </div>
-
-                                        {/* 🔥 Unseen message badge */}
-                                        {activeChatUser !== user && unseenCounts[user] > 0 && (
-                                            <div className="ml-2 px-2 py-0.5 bg-red-500 text-white text-xs rounded-full">
-                                                {unseenCounts[user]}
-                                            </div>
-                                        )}
+                                        <div className="flex items-center space-x-2">
+                                            {/* Unseen message badge */}
+                                            {activeChatUser !== user && unseenCounts[user] > 0 && (
+                                                <div className="px-2 py-0.5 bg-red-500 text-white text-xs rounded-full">
+                                                    {unseenCounts[user]}
+                                                </div>
+                                            )}
+                                            {/* Disconnect user button */}
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                    if (window.confirm(`Are you sure you want to disconnect ${user}?`)) {
+                                                        disconnectUser(user)
+                                                    }
+                                                }}
+                                                className="opacity-0 group-hover:opacity-100 p-1 hover:bg-red-500/20 rounded text-red-400 hover:text-red-300 transition-all duration-200"
+                                                title={`Disconnect ${user}`}
+                                            >
+                                                <UserX size={14} />
+                                            </button>
+                                        </div>
                                     </div>
                                 </li>
                             ))}
@@ -125,7 +154,6 @@ const Index = ({
 
             {/* Chat Window */}
             <div className="flex-1 flex flex-col bg-gradient-to-b from-slate-800 to-slate-900">
-
                 {/* Chat Header */}
                 <div className="bg-gradient-to-r from-slate-800 to-purple-800 text-white p-6 border-b border-purple-500/20 shadow-lg">
                     <div className="flex justify-between items-center">
@@ -133,9 +161,7 @@ const Index = ({
                             {activeChatUser ? (
                                 <>
                                     <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                                        <span className="text-lg font-bold text-white">
-                                            {activeChatUser.charAt(0).toUpperCase()}
-                                        </span>
+                                        <span className="text-lg font-bold text-white">{activeChatUser.charAt(0).toUpperCase()}</span>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold">{activeChatUser}</h3>
@@ -148,18 +174,26 @@ const Index = ({
                             ) : (
                                 <div>
                                     <h3 className="text-xl font-bold">Select a conversation</h3>
-                                    <p className="text-purple-300 text-sm">
-                                        Choose a user from the sidebar to start chatting
-                                    </p>
+                                    <p className="text-purple-300 text-sm">Choose a user from the sidebar to start chatting</p>
                                 </div>
                             )}
                         </div>
-                        <button
-                            onClick={() => setIsChatOpen(false)}
-                            className="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
-                        >
-                            <X size={24} />
-                        </button>
+                        <div className="flex items-center space-x-2">
+                            <button
+                                onClick={onMinimize}
+                                className="text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
+                                title="Minimize"
+                            >
+                                <Minus size={20} />
+                            </button>
+                            <button
+                                onClick={setIsChatOpen}
+                                className="text-gray-400 hover:text-red-400 p-2 hover:bg-red-500/10 rounded-lg transition-all duration-200"
+                                title="Close Admin Panel"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -187,8 +221,14 @@ const Index = ({
                                     <div className="bg-gray-200 px-6 py-4 rounded-2xl">
                                         <div className="flex space-x-1">
                                             <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                                            <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                                            <div
+                                                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                                style={{ animationDelay: "0.1s" }}
+                                            ></div>
+                                            <div
+                                                className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                                                style={{ animationDelay: "0.2s" }}
+                                            ></div>
                                         </div>
                                     </div>
                                 </div>
@@ -219,10 +259,11 @@ const Index = ({
                                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                                 placeholder="Type your message..."
                                 className="flex-1 bg-slate-700 text-white border border-purple-500/30 rounded-2xl px-6 py-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400"
+                                disabled={!isConnected}
                             />
                             <button
                                 onClick={sendMessage}
-                                disabled={!newMessage.trim()}
+                                disabled={!newMessage.trim() || !isConnected}
                                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 text-white px-8 py-4 rounded-2xl transition-all duration-200 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105 disabled:scale-100"
                             >
                                 <Send size={20} />
