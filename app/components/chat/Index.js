@@ -55,7 +55,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
         notification.close()
       }
 
-      setTimeout(() => notification.close(), 5000)
+      setTimeout(() => notification.close(), 10000)
     }
   }
 
