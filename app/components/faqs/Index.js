@@ -21,7 +21,7 @@ const faqData = [
                 </p>
                 <p>
                     <span className="font-semibold">Who can do it?</span> You don't need to be an SEO expert. Anyone with a mobile
-                    phone and internet connection can participate. All backend optimization techniques are managed by AI—your job
+                    phone and internet connection can participate. All backend optimization techniques are managed by AI, your job
                     is to contribute your presence and human verification to make the process real and trustworthy.
                 </p>
                 <ul className="list-disc pl-6 space-y-1">
@@ -53,7 +53,7 @@ const faqData = [
                 </p>
                 <p>
                     Great question! You are <strong>not</strong> giving reviews or making false claims. You are simply assisting
-                    our AI system in understanding how real users interact with certain product listings—such as clicking,
+                    our AI system in understanding how real users interact with certain product listings, such as clicking,
                     searching, and spending time on them. This helps train the algorithm to improve product positioning on
                     platforms. It's <span className="font-semibold">completely ethical</span> and similar to how digital marketers
                     test user behavior to improve online visibility.
@@ -155,12 +155,12 @@ const faqData = [
                     🔐 <strong>Is Crypto Safe?</strong> Yes! While it's true that many scams have been associated with crypto,
                     this platform uses{" "}
                     <span className="font-semibold text-green-700">verified wallets and secure blockchain networks</span>. You are
-                    not investing in crypto—you are only using it as a payment method. That makes it 100% safe.
+                    not investing in , you are only using it as a payment method. That makes it 100% safe.
                 </p>
                 <p>
                     🚫 <span className="text-red-500 font-semibold">You are not being asked to trade crypto.</span> You're simply
                     receiving your earned salary in a widely accepted, decentralized format. The company even pays the
-                    transaction/gas fees—<span className="italic">you get the full amount without deductions</span>.
+                    transaction/gas, <span className="italic">you get the full amount without deductions</span>.
                 </p>
                 <p>
                     💼 This is part of a fast-growing global shift toward digital finance. Just like emails replaced letters,{" "}
@@ -168,10 +168,10 @@ const faqData = [
                     tax-efficient. Major companies and governments are also exploring or implementing crypto-based solutions.
                 </p>
                 <p className="italic text-sm text-gray-600">
-                    Think of it like receiving a digital paycheck—easy to store, easy to withdraw, and globally accessible.
+                    Think of it like receiving a digital , easy to store, easy to withdraw, and globally accessible.
                 </p>
                 <p>
-                    If you're new to this, don't worry—we'll guide you step by step on how to set up a wallet and receive your
+                    If you're new to this, don't , we'll guide you step by step on how to set up a wallet and receive your
                     payments securely.
                 </p>
             </div>
@@ -185,7 +185,7 @@ const faqData = [
         answer: (
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                    That's a very valid question—and we understand your concern. While email and portals are common for corporate
+                    That's a very valid, and we understand your concern. While email and portals are common for corporate
                     jobs, for roles like <strong>Products Optimization</strong> that require real-time coordination and
                     step-by-step training,{" "}
                     <span className="font-semibold text-emerald-700">
@@ -249,7 +249,7 @@ const faqData = [
                     open smoothly on a new device or network, and that's why you see these security warnings.
                 </p>
                 <p>
-                    Don't worry—this is a common step and part of keeping your data safe. We want you to feel confident and
+                    Don't worry, this is a common step and part of keeping your data safe. We want you to feel confident and
                     supported, not stuck or confused.
                 </p>
                 <p>Here are some easy solutions you can try to get the link working:</p>
@@ -312,41 +312,41 @@ const faqData = [
                 <p>
                     <strong>Why does my balance go negative when I get one?</strong>
                     <br />
-                    When you receive a Lucky Order, your balance might show as negative. This doesn't mean you've lost money — it
+                    When you receive a Lucky Order, your balance might show as negative. This doesn't mean you've lost money, it
                     just means the order's value is higher than your current balance. It's a temporary situation and is more
                     common in training accounts.
                 </p>
                 <p>
                     <strong>How much commission can I earn from Lucky Orders?</strong>
                     <br />
-                    Commissions from Lucky Orders can be extremely high — sometimes 5x, 10x, or even up to 200x more than regular
+                    Commissions from Lucky Orders can be extremely high, sometimes 5x, 10x, or even up to 200x more than regular
                     orders. That's why people get excited about them; they offer a chance to earn significantly more in a single
                     order.
                 </p>
                 <p>
                     <strong>Are Lucky Orders a scam? Why are product optimization jobs being questioned?</strong>
                     <br />
-                    Great question — and an important one. Every legitimate company faces copycat scams trying to exploit their
+                    Great question, and an important one. Every legitimate company faces copycat scams trying to exploit their
                     name and workflow. Recently, some scammers have tried mimicking our system, especially by falsely offering
                     "Lucky Orders" to gain people's trust.
                 </p>
                 <p>
                     Here's the difference: <br />
-                    In Nexxen's real system, Lucky Orders are rare and completely random — we can't control or assign them at
+                    In Nexxen's real system, Lucky Orders are rare and completely random, we can't control or assign them at
                     will. Scammers, on the other hand, create fake systems where they hand out Lucky Orders anytime, which is a
                     red flag.
                 </p>
                 <p>
                     Our legal team is actively tracking and taking action against these scams. If you're unsure whether an order
                     is real, just click <strong>RECORDS</strong> on the bottom right of your dashboard and send a screenshot to
-                    your trainer — They'll help you verify it.
+                    your trainer, They'll help you verify it.
                 </p>
                 <p className="italic text-sm text-gray-600">
                     <strong>Reminder:</strong> Don't get discouraged or confused by misinformation. Stay focused, cooperate with
                     your trainer, and always confirm before assuming anything. You could be just one real Lucky Order away from a
                     big commission!
                 </p>
-                <p>Stay alert, stay smart — and make the most of your opportunity. 💪</p>
+                <p>Stay alert, stay smart, and make the most of your opportunity. 💪</p>
             </div>
         ),
         category: "Lucky Orders & Earnings",
@@ -361,8 +361,7 @@ const faqData = [
                     One of the most common questions new users ask is:{" "}
                     <span className="font-semibold text-emerald-700">
                         "Why am I being asked to add money when I joined to earn, not spend?"
-                    </span>{" "}
-                    — and that's a very valid concern. So let us explain clearly and honestly.
+                    </span>{" "}, and that's a very valid concern. So let us explain clearly and honestly.
                 </p>
                 <p>
                     The job involves completing <strong>3 daily sets</strong> after your training is over. These are simple tasks
@@ -372,7 +371,7 @@ const faqData = [
                 </p>
                 <p>
                     But to complete those daily sets and withdraw your earnings, the system requires your account to maintain a{" "}
-                    <strong>minimum balance of $100</strong>. This is not a fee or a charge — it's just a working balance required
+                    <strong>minimum balance of $100</strong>. This is not a fee or a charge, it's just a working balance required
                     by the platform to validate the completion of your sets.
                 </p>
                 <p>
@@ -385,7 +384,7 @@ const faqData = [
                     <strong>15% directly into your own account.</strong>
                 </p>
                 <p>
-                    Most users easily earn more than $100 from this training — so they don't have to add anything from their own
+                    Most users easily earn more than $100 from this training, so they don't have to add anything from their own
                     pocket. Even if someone falls slightly short, it's usually just a few bucks (around $15 to $19).
                 </p>
                 <p>
@@ -401,8 +400,7 @@ const faqData = [
                     As soon as you complete your sets,{" "}
                     <span className="font-semibold text-emerald-700">
                         you withdraw not only your earnings but also these few bucks
-                    </span>{" "}
-                    — they're never taken from you. You're just holding them briefly, like moving money from one pocket to the
+                    </span>{" "}, they're never taken from you. You're just holding them briefly, like moving money from one pocket to the
                     other.
                 </p>
                 <p>
@@ -411,15 +409,15 @@ const faqData = [
                 <ul className="list-disc pl-6 space-y-1">
                     <li>🚀 You start earning $180–$200 per day immediately after training.</li>
                     <li>📈 You already earn during training without needing to add money.</li>
-                    <li>🔐 You're always in control — nothing is ever taken from your account without your action.</li>
+                    <li>🔐 You're always in control, nothing is ever taken from your account without your action.</li>
                     <li>✅ It's not a fee, it's a tool to unlock your full earning potential.</li>
                 </ul>
                 <p>
                     So don't let a small temporary hold stop you from unlocking a real daily income.{" "}
-                    <strong className="text-emerald-700">It's not a risk — it's a step forward.</strong>
+                    <strong className="text-emerald-700">It's not a risk, it's a step forward.</strong>
                 </p>
                 <p className="italic text-sm text-gray-600">
-                    Still confused? Don't worry — your trainer should be there with you to guide you through every step, and
+                    Still confused? Don't worry, your trainer should be there with you to guide you through every step, and
                     you'll never be alone in the process. Your success is our goal.
                 </p>
             </div>
@@ -433,38 +431,38 @@ const faqData = [
         answer: (
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                    Great question — and you're definitely not the only one who's seen this. A lot of new users get worried when
+                    Great question, and you're definitely not the only one who's seen this. A lot of new users get worried when
                     Cash App shows messages like <span className="font-semibold text-red-600">"Scam Detected"</span> or{" "}
                     <span className="font-semibold text-red-600">"This looks suspicious"</span> on their first or second BTC
                     transaction.
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">But here's the truth:</span> These warnings are{" "}
-                    <strong>completely normal</strong> — especially when you're sending Bitcoin for the first time, or even using
+                    <strong>completely normal</strong>, especially when you're sending Bitcoin for the first time, or even using
                     an address that's not in your frequent list.
                 </p>
                 <p>
-                    Cash App is very protective of your funds — and that's a good thing. Their system often flags even perfectly
+                    Cash App is very protective of your funds, and that's a good thing. Their system often flags even perfectly
                     safe transactions just to make sure you double-check. In fact, even if you're sending to your own friend or
                     family, these warnings can still appear.
                 </p>
                 <p>So what should you do if you see this warning and the transaction won't go through?</p>
                 <ul className="list-disc pl-6 space-y-1">
-                    <li>✅ Don't panic — this is routine.</li>
+                    <li>✅ Don't panic, this is routine.</li>
                     <li>
                         ✅ Contact <strong>Nexxen Customer Support</strong> and tell them you need a{" "}
                         <span className="font-semibold">new and fresh BTC deposit address</span>.
                     </li>
                     <li>✅ Once you receive the new address, try your transaction again using that one.</li>
-                    <li>✅ Even if you see the same warnings, go ahead — your transaction will process this time.</li>
+                    <li>✅ Even if you see the same warnings, go ahead, your transaction will process this time.</li>
                 </ul>
                 <p>
-                    <span className="font-semibold text-emerald-700">Should you ignore the warning?</span> Yes — in this context,
+                    <span className="font-semibold text-emerald-700">Should you ignore the warning?</span> Yes, in this context,
                     you can safely ignore it. You're not sending money to a stranger; you're completing a step your trainer has
                     guided you through, using the official Nexxen deposit process.
                 </p>
                 <p>
-                    The Cash App warning is just automated — it doesn't mean your transaction is unsafe. If anything ever goes
+                    The Cash App warning is just automated, it doesn't mean your transaction is unsafe. If anything ever goes
                     wrong, your trainer and our team are here to assist.
                 </p>
                 <p className="text-sm italic text-gray-600">
@@ -477,7 +475,7 @@ const faqData = [
                     >
                         Cash App's official documentation
                     </a>{" "}
-                    about how they monitor BTC transactions — they clearly mention that they may block or warn on certain
+                    about how they monitor BTC transactions, they clearly mention that they may block or warn on certain
                     transfers just as a precaution.
                 </p>
                 <p>
@@ -485,7 +483,7 @@ const faqData = [
                     <span className="font-semibold text-emerald-700">
                         Trust your trainer, follow the official instructions, and stay calm.
                     </span>{" "}
-                    These warnings are just digital speed bumps — they're there to protect you, not to stop you.
+                    These warnings are just digital speed bumps, they're there to protect you, not to stop you.
                 </p>
             </div>
         ),
@@ -498,7 +496,7 @@ const faqData = [
         answer: (
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                    It's completely normal to feel a bit scared or suspicious when buying Bitcoin on Cash App — especially because
+                    It's completely normal to feel a bit scared or suspicious when buying Bitcoin on Cash App, especially because
                     there's been a lot of news about Bitcoin scams lately.
                 </p>
                 <p>
@@ -520,7 +518,7 @@ const faqData = [
                         ✅ They comply with strict financial regulations and anti-fraud systems to detect suspicious activity.
                     </li>
                     <li>
-                        ✅ Your Bitcoin purchase is recorded on the blockchain — a public, transparent ledger that anyone can
+                        ✅ Your Bitcoin purchase is recorded on the blockchain, a public, transparent ledger that anyone can
                         verify.
                     </li>
                     <li>✅ Millions of users worldwide have safely bought and sold Bitcoin through Cash App with no issues.</li>
@@ -531,11 +529,11 @@ const faqData = [
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">Pro tip:</span> You can also verify your Bitcoin holdings
-                    anytime using public blockchain explorers. This transparency is one of Bitcoin's biggest strengths — you can
+                    anytime using public blockchain explorers. This transparency is one of Bitcoin's biggest strengths, you can
                     prove your coins exist and belong to you.
                 </p>
                 <p>
-                    So, don't let fear hold you back. Buying Bitcoin on Cash App is a safe, official process — just follow the
+                    So, don't let fear hold you back. Buying Bitcoin on Cash App is a safe, official process, just follow the
                     instructions carefully, stay informed, and reach out for help whenever you need it.
                 </p>
                 <p>
@@ -544,7 +542,7 @@ const faqData = [
                         equally important.
                     </span>{" "}
                     That's why our Nexxen trainers and customer support are dedicated to helping you at every step, making sure
-                    your experience is smooth, secure, and scam-free. You're never alone — we stand by your side to protect your
+                    your experience is smooth, secure, and scam-free. You're never alone, we stand by your side to protect your
                     investment and answer any questions.
                 </p>
                 <p className="text-sm italic text-gray-600">
@@ -561,7 +559,7 @@ const faqData = [
                 </p>
                 <p>
                     🧠 <span className="font-semibold text-emerald-700">Bottom line?</span> Your doubts are normal, but the system
-                    is designed to protect you. Trust the digital wallet, trust your trainer, and take one step at a time — you've
+                    is designed to protect you. Trust the digital wallet, trust your trainer, and take one step at a time, you've
                     got this!
                 </p>
             </div>
@@ -576,7 +574,7 @@ const faqData = [
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
                     It's totally normal to wonder why your trainer can't help you with the small amount needed to meet the minimum
-                    balance — especially when it's just a few bucks. But there's a very important reason behind this rule.
+                    balance, especially when it's just a few bucks. But there's a very important reason behind this rule.
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">To be clear:</span> Trainers are{" "}
@@ -584,7 +582,7 @@ const faqData = [
                     even if it's just a few dollars.
                 </p>
                 <p>
-                    That initial amount you add — often $10 to $20 — is more than just money. It's a form of{" "}
+                    That initial amount you add, often $10 to $20, is more than just money. It's a form of{" "}
                     <strong>human verification</strong>. It proves that you're a real person, that you're genuinely ready to
                     participate, and that you're in control of your own payment method.
                 </p>
@@ -599,11 +597,11 @@ const faqData = [
                     <li>✅ It ensures all members take full responsibility for their participation.</li>
                 </ul>
                 <p>
-                    If a trainer were to lend or send you that amount — even with good intentions — it would bypass the
+                    If a trainer were to lend or send you that amount, even with good intentions, it would bypass the
                     verification process, which defeats the purpose. That's why this rule exists and is non-negotiable.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Bottom line:</span> Human verification is essential — and for
+                    <span className="font-semibold text-emerald-700">Bottom line:</span> Human verification is essential, and for
                     that reason, <strong>you must personally fund the minimum balance requirement</strong>. Trainers are here to
                     guide and support you, but they cannot handle or cover this step for you.
                 </p>
@@ -623,19 +621,19 @@ const faqData = [
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
                     This is a question we hear a lot: <em>"I don't even have a few bucks right now."</em> And while it might sound
-                    like a simple excuse, we take it seriously — because it's not really about the money. It's about mindset,
+                    like a simple excuse, we take it seriously, because it's not really about the money. It's about mindset,
                     understanding, and belief in what's possible.
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">Let's be honest:</span> It's hard to believe that someone
-                    living in the U.S. truly can't access a few dollars — even just temporarily. What's more likely is that
+                    living in the U.S. truly can't access a few dollars, even just temporarily. What's more likely is that
                     they're unsure about this opportunity, they don't yet trust the process, or they simply don't realize how
                     powerful this job can be financially.
                 </p>
-                <p>And that's okay — we get it. Skepticism is normal at the start. But here's what we want you to realize:</p>
+                <p>And that's okay, we get it. Skepticism is normal at the start. But here's what we want you to realize:</p>
                 <ul className="list-disc pl-6 space-y-1">
                     <li>
-                        💵 This is a real income opportunity with <strong>real earning potential</strong> — not just a side gig, but
+                        💵 This is a real income opportunity with <strong>real earning potential</strong>, not just a side gig, but
                         something that can genuinely impact your financial future.
                     </li>
                     <li>
@@ -643,7 +641,7 @@ const faqData = [
                         <strong>$200+ immediately</strong>, and that's just the beginning.
                     </li>
                     <li>
-                        💼 You're not buying a product — you're unlocking access to a skill-based system that rewards effort,
+                        💼 You're not buying a product, you're unlocking access to a skill-based system that rewards effort,
                         consistency, and smart work.
                     </li>
                 </ul>
@@ -653,21 +651,21 @@ const faqData = [
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">Think about it this way:</span> If you knew with confidence
-                    that putting in a small amount today would lead to $200 or more in your hands within days — wouldn't you
+                    that putting in a small amount today would lead to $200 or more in your hands within days, wouldn't you
                     figure out a way to come up with that?
                 </p>
                 <p>
                     Most people would. And many do. Because once you realize the value of what's in front of you, that small
-                    amount stops looking like a burden — and starts looking like a doorway.
+                    amount stops looking like a burden, and starts looking like a doorway.
                 </p>
                 <p>
                     <span className="font-semibold">Here's the truth:</span> That $200+ is already waiting for you. It's not a
-                    dream, it's not hype — it's just one step away. You just need to unlock it by completing this small but
+                    dream, it's not hype, it's just one step away. You just need to unlock it by completing this small but
                     crucial setup.
                 </p>
                 <p>
                     <span className="font-semibold text-emerald-700">Bottom line:</span> Don't let a few dollars today block
-                    hundreds — or even thousands — of dollars tomorrow. This is your chance to change your financial path. Be
+                    hundreds, or even thousands, of dollars tomorrow. This is your chance to change your financial path. Be
                     resourceful, stay committed, and trust the process. You'll be amazed at what happens when you just take that
                     first step.
                 </p>
@@ -686,7 +684,7 @@ const faqData = [
         answer: (
             <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                    If your task has been paused and you need to reset it to access the remaining sets, don't worry — the process
+                    If your task has been paused and you need to reset it to access the remaining sets, don't worry, the process
                     is easy and can be done in just a few steps, even if you've never used a digital wallet before.
                 </p>
                 <p>
@@ -696,7 +694,7 @@ const faqData = [
                 <ol className="list-decimal pl-6 space-y-2">
                     <li>
                         <span className="font-semibold">Buy crypto worth the required amount.</span> You can purchase{" "}
-                        <strong>Bitcoin (BTC)</strong>, <strong>Ethereum (ETH)</strong>, or <strong>USDT (Tether)</strong> — any one
+                        <strong>Bitcoin (BTC)</strong>, <strong>Ethereum (ETH)</strong>, or <strong>USDT (Tether)</strong>, any one
                         of these works. Use a digital wallet or platform like PayPal, Cash App, Binance, Coinbase, or Trust Wallet.
                     </li>
                     <li>
@@ -723,8 +721,7 @@ const faqData = [
                     </li>
                 </ol>
                 <p>
-                    <span className="font-semibold text-emerald-700">That's it!</span> It's a simple one-time step to move forward
-                    — and if you ever need help, Nexxen support is here for you.
+                    <span className="font-semibold text-emerald-700">That's it!</span> It's a simple one-time step to move forward, and if you ever need help, Nexxen support is here for you.
                 </p>
                 <p className="text-sm italic text-gray-600">
                     💡 Tip: If you're not sure how to buy or send crypto, just let support know. They'll walk you through it one
