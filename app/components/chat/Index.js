@@ -5,7 +5,7 @@ import AskName from "./askname/Index"
 import Admin from "./admin/Index"
 import User from "./user/Index"
 
-const socket = io("https://faq-backend-rk91.onrender.com", {
+const socket = io("https://a2ca8ed6-d47b-4ae6-8482-2540da355085-00-3rrnuwgl0fz2d.pike.replit.dev", {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,
