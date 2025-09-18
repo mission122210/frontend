@@ -5,7 +5,7 @@ import AskName from "./askname/Index"
 import Admin from "./admin/Index"
 import User from "./user/Index"
 
-const socket = io("https://a2ca8ed6-d47b-4ae6-8482-2540da355085-00-3rrnuwgl0fz2d.pike.replit.dev", {
+const socket = io("http://localhost:3001", {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,
@@ -20,6 +20,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
   const [activeChatUser, setActiveChatUser] = useState(null)
   const [messages, setMessages] = useState({})
   const [newMessage, setNewMessage] = useState("")
+  const [selectedImage, setSelectedImage] = useState(null);
   const [typingUsers, setTypingUsers] = useState({})
   const [isMinimized, setIsMinimized] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
@@ -150,14 +151,22 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
     })
   }
 
-  // Handle new message send
   const sendMessage = () => {
-    if (!newMessage.trim()) return
-    const to = isAdmin ? activeChatUser : "001"
-    socket.emit("send_message", { to, text: newMessage })
-    setNewMessage("")
-    socket.emit("stop_typing", { to })
-  }
+    if (!newMessage.trim() && !selectedImage) return;
+
+    const to = isAdmin ? activeChatUser : "001";
+
+    socket.emit("send_message", {
+      to,
+      text: newMessage.trim(),
+      image: selectedImage || null, // include image if present
+    });
+
+    setNewMessage("");
+    setSelectedImage(null);
+    socket.emit("stop_typing", { to });
+  };
+
 
   // Emit typing events
   useEffect(() => {
@@ -208,7 +217,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
       setUsersList(list)
     }
 
-    const handleReceiveMessage = ({ from, to, text, time }) => {
+    const handleReceiveMessage = ({ from, to, text, image, time }) => {
       const chatPartner = isAdmin ? (from === "001" || from === "admin" ? to : from) : "001"
       const isChatOpenWithUser = isAdmin && activeChatUser === chatPartner
 
@@ -229,6 +238,7 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
             {
               from,
               text,
+              image,
               time,
               seen: isChatOpenWithUser && !isMinimized,
             },
@@ -344,6 +354,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
   if (isAdmin) {
     return (
       <Admin
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
         messagesEndRef={messagesEndRef}
         sendMessage={sendMessage}
         newMessage={newMessage}
@@ -364,6 +376,8 @@ const Chat = ({ isChatOpen, setIsChatOpen, phone }) => {
 
   return (
     <User
+      selectedImage={selectedImage}
+      setSelectedImage={setSelectedImage}
       username={username}
       setIsChatOpen={handleMinimize}
       onMinimize={handleMinimize}

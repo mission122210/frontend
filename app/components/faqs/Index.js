@@ -797,7 +797,6 @@ const mockUsers = [
     { id: 60, name: "Amber Patel", avatar: "AP", verified: true },
 ];
 
-
 // Mock initial comments data
 const initialComments = {
     1: [
@@ -1428,7 +1427,8 @@ const initialComments = {
         {
             id: 1,
             userId: 9, // Nina Patel
-            text: "I was a bit unsure about the $100 thing but now that I understand it’s just a system requirement, it makes sense. I didn’t have to add the full amount either, most came from the training phase.",
+            text: "I was a bit unsure about the $100 thing, but now that I understand it’s just a system requirement, it makes sense. I didn’t have to add the full amount either, most of it came from the training phase. I’ve already withdrawn today’s earnings. I earned $200.44 and successfully withdrew it.",
+            images: ["/p1.jpg", "/p2.jpg"],
             timestamp: "6 hours ago",
             likes: 20,
             likedByUser: false,
@@ -2277,6 +2277,19 @@ const Index = () => {
                             <span className="text-xs text-gray-500">{comment.timestamp}</span>
                         </div>
                         <p className="mt-1 text-sm text-gray-700">{comment.text}</p>
+                        {comment.images && comment.images.length > 0 && (
+                            <div className="mt-3 flex flex-wrap gap-3">
+                                {comment.images.map((image, index) => (
+                                    <img
+                                        key={index}
+                                        src={image}
+                                        alt={`Comment image ${index + 1}`}
+                                        className="max-h-85 w-auto rounded-md object-contain flex-shrink-0"
+                                    />
+                                ))}
+                            </div>
+                        )}
+
                         <div className="mt-2 flex items-center space-x-4">
                             <button
                                 onClick={() => handleLikeComment(faqId, comment.id, isReply, parentCommentId)}

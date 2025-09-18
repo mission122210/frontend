@@ -1,8 +1,10 @@
 "use client"
-import { X, Send, Users, MessageCircle, Crown, Minus, UserX, Wifi, WifiOff, Menu } from "lucide-react"
-import { useState } from "react"
+import { X, Send, Users, MessageCircle, Crown, Minus, UserX, Wifi, WifiOff, Menu, ImageIcon, Smile } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
 
-const Index = ({
+const ChatInterface = ({
+    selectedImage,
+    setSelectedImage,
     setIsChatOpen,
     onMinimize,
     usersList,
@@ -19,12 +21,313 @@ const Index = ({
     isConnected,
 }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [isDragOver, setIsDragOver] = useState(false)
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false)
+    const [fullScreenImage, setFullScreenImage] = useState(null)
+    const fileInputRef = useRef(null)
+    const textareaRef = useRef(null)
+    const emojiPickerRef = useRef(null)
+
+    const commonEmojis = [
+        "😀",
+        "😃",
+        "😄",
+        "😁",
+        "😆",
+        "😅",
+        "😂",
+        "🤣",
+        "😊",
+        "😇",
+        "🙂",
+        "🙃",
+        "😉",
+        "😌",
+        "😍",
+        "🥰",
+        "😘",
+        "😗",
+        "😙",
+        "😚",
+        "😋",
+        "😛",
+        "😝",
+        "😜",
+        "🤪",
+        "🤨",
+        "🧐",
+        "🤓",
+        "😎",
+        "🤩",
+        "🥳",
+        "😏",
+        "😒",
+        "😞",
+        "😔",
+        "😟",
+        "😕",
+        "🙁",
+        "☹️",
+        "😣",
+        "😖",
+        "😫",
+        "😩",
+        "🥺",
+        "😢",
+        "😭",
+        "😤",
+        "😠",
+        "😡",
+        "🤬",
+        "🤯",
+        "😳",
+        "🥵",
+        "🥶",
+        "😱",
+        "😨",
+        "😰",
+        "😥",
+        "😓",
+        "🤗",
+        "🤔",
+        "🤭",
+        "🤫",
+        "🤥",
+        "😶",
+        "😐",
+        "😑",
+        "😬",
+        "🙄",
+        "😯",
+        "😦",
+        "😧",
+        "😮",
+        "😲",
+        "🥱",
+        "😴",
+        "🤤",
+        "😪",
+        "😵",
+        "🤐",
+        "🥴",
+        "🤢",
+        "🤮",
+        "🤧",
+        "😷",
+        "🤒",
+        "🤕",
+        "🤑",
+        "🤠",
+        "😈",
+        "👍",
+        "👎",
+        "👌",
+        "✌️",
+        "🤞",
+        "🤟",
+        "🤘",
+        "🤙",
+        "👈",
+        "👉",
+        "👆",
+        "🖕",
+        "👇",
+        "☝️",
+        "👋",
+        "🤚",
+        "🖐️",
+        "✋",
+        "🖖",
+        "👏",
+        "🙌",
+        "🤲",
+        "🤝",
+        "🙏",
+        "✍️",
+        "💪",
+        "🦾",
+        "🦿",
+        "🦵",
+        "🦶",
+        "❤️",
+        "🧡",
+        "💛",
+        "💚",
+        "💙",
+        "💜",
+        "🖤",
+        "🤍",
+        "🤎",
+        "💔",
+        "❣️",
+        "💕",
+        "💞",
+        "💓",
+        "💗",
+        "💖",
+        "💘",
+        "💝",
+        "💟",
+        "☮️",
+        "✝️",
+        "☪️",
+        "🕉️",
+        "☸️",
+        "✡️",
+        "🔯",
+        "🕎",
+        "☯️",
+        "☦️",
+        "🛐",
+        "⭐",
+        "🌟",
+        "✨",
+        "⚡",
+        "☄️",
+        "💥",
+        "🔥",
+        "🌈",
+        "☀️",
+        "🌤️",
+    ]
 
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
 
+    const handleImageChange = (file) => {
+        if (file && file.type.startsWith("image/")) {
+            if (file.size > 5 * 1024 * 1024) {
+                alert("Image size should be less than 5MB")
+                return
+            }
+
+            const reader = new FileReader()
+            reader.onload = () => setSelectedImage(reader.result)
+            reader.readAsDataURL(file)
+        }
+    }
+
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0]
+        handleImageChange(file)
+    }
+
+    useEffect(() => {
+        const handlePaste = (e) => {
+            const activeElement = document.activeElement
+            const isTextareaFocused = activeElement === textareaRef.current
+
+            if (!isTextareaFocused && !activeElement?.closest(".chat-input-area")) {
+                return
+            }
+
+            const items = e.clipboardData?.items
+            if (!items) return
+
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i]
+                if (item.type.startsWith("image/")) {
+                    e.preventDefault()
+                    const file = item.getAsFile()
+                    if (file) {
+                        handleImageChange(file)
+                    }
+                    break
+                }
+            }
+        }
+
+        document.addEventListener("paste", handlePaste)
+
+        return () => {
+            document.removeEventListener("paste", handlePaste)
+        }
+    }, [])
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+                setShowEmojiPicker(false)
+            }
+        }
+
+        if (showEmojiPicker) {
+            document.addEventListener("mousedown", handleClickOutside)
+            return () => document.removeEventListener("mousedown", handleClickOutside)
+        }
+    }, [showEmojiPicker])
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+        setIsDragOver(true)
+    }
+
+    const handleDragLeave = (e) => {
+        e.preventDefault()
+        setIsDragOver(false)
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        setIsDragOver(false)
+
+        const files = e.dataTransfer.files
+        if (files.length > 0) {
+            handleImageChange(files[0])
+        }
+    }
+
+    const removeSelectedImage = () => {
+        setSelectedImage(null)
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ""
+        }
+    }
+
+    const insertEmoji = (emoji) => {
+        const textarea = textareaRef.current
+        if (textarea) {
+            const start = textarea.selectionStart
+            const end = textarea.selectionEnd
+            const newMessageValue = newMessage.substring(0, start) + emoji + newMessage.substring(end)
+            setNewMessage(newMessageValue)
+
+            setTimeout(() => {
+                textarea.selectionStart = start + emoji.length
+                textarea.selectionEnd = start + emoji.length
+                textarea.focus()
+            }, 0)
+        } else {
+            setNewMessage((prev) => prev + emoji)
+        }
+        setShowEmojiPicker(false)
+    }
+
+    const openImageFullScreen = (imageSrc) => {
+        setFullScreenImage(imageSrc)
+    }
+
+    const closeFullScreenImage = () => {
+        setFullScreenImage(null)
+    }
+
     return (
         <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex z-50">
-            {/* Mobile Overlay */}
+            {fullScreenImage && (
+                <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 z-[60]">
+                    <button
+                        onClick={closeFullScreenImage}
+                        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+                    >
+                        <X size={32} />
+                    </button>
+                    <img
+                        src={fullScreenImage || "/placeholder.svg"}
+                        alt="Full screen view"
+                        className="max-w-full max-h-full object-contain rounded-lg"
+                    />
+                </div>
+            )}
+
             {isSidebarOpen && (
                 <div className="fixed inset-0 bg-black/50 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)} />
             )}
@@ -42,7 +345,6 @@ const Index = ({
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
       `}
             >
-                {/* Header */}
                 <div className="p-4 sm:p-6 border-b border-purple-500/20">
                     <div className="flex justify-between items-center mb-3 sm:mb-4">
                         <div className="flex items-center space-x-2 sm:space-x-3">
@@ -79,9 +381,8 @@ const Index = ({
                                 className="text-gray-400 hover:text-red-400 p-1.5 sm:p-2 hover:bg-red-500/10 rounded-lg transition-all duration-200"
                                 title="Close Admin Panel"
                             >
-                                <X size={16} className="sm:w-5 sm:h-5" />
+                                <X size={20} className="sm:w-6 sm:h-6" />
                             </button>
-                            {/* Mobile close sidebar button */}
                             <button
                                 onClick={() => setIsSidebarOpen(false)}
                                 className="lg:hidden text-gray-400 hover:text-white p-1.5 hover:bg-white/10 rounded-lg transition-all duration-200"
@@ -92,7 +393,6 @@ const Index = ({
                         </div>
                     </div>
 
-                    {/* Stats */}
                     <div className="grid grid-cols-2 gap-2 sm:gap-3">
                         <div className="bg-gradient-to-r from-emerald-500/20 to-teal-500/20 p-2 sm:p-3 rounded-lg sm:rounded-xl border border-emerald-500/30">
                             <div className="flex items-center space-x-1 sm:space-x-2">
@@ -118,7 +418,6 @@ const Index = ({
                     </div>
                 </div>
 
-                {/* Users List */}
                 <div className="p-3 sm:p-6 overflow-y-auto h-[calc(100vh-200px)] sm:h-auto">
                     <h4 className="text-white font-semibold mb-3 sm:mb-4 flex items-center space-x-2 text-sm sm:text-base">
                         <Users size={14} className="sm:w-[18px] sm:h-[18px]" />
@@ -143,7 +442,7 @@ const Index = ({
                                         }`}
                                     onClick={() => {
                                         setActiveChatUser(user)
-                                        setIsSidebarOpen(false) // Close sidebar on mobile when user is selected
+                                        setIsSidebarOpen(false)
                                     }}
                                 >
                                     <div className="flex items-center space-x-2 sm:space-x-3">
@@ -158,13 +457,11 @@ const Index = ({
                                             <div className="text-xs opacity-75">{typingUsers[user] ? "Typing..." : "Online"}</div>
                                         </div>
                                         <div className="flex items-center space-x-1 sm:space-x-2">
-                                            {/* Unseen message badge */}
                                             {activeChatUser !== user && unseenCounts[user] > 0 && (
                                                 <div className="px-1.5 sm:px-2 py-0.5 bg-red-500 text-white text-xs rounded-full min-w-[20px] text-center">
                                                     {unseenCounts[user]}
                                                 </div>
                                             )}
-                                            {/* Disconnect user button */}
                                             <button
                                                 onClick={(e) => {
                                                     e.stopPropagation()
@@ -192,7 +489,6 @@ const Index = ({
                 <div className="bg-gradient-to-r from-slate-800 to-purple-800 text-white p-3 sm:p-6 border-b border-purple-500/20 shadow-lg">
                     <div className="flex justify-between items-center">
                         <div className="flex items-center space-x-2 sm:space-x-4">
-                            {/* Mobile menu button */}
                             <button
                                 onClick={toggleSidebar}
                                 className="lg:hidden text-gray-400 hover:text-white p-2 hover:bg-white/10 rounded-lg transition-all duration-200"
@@ -254,8 +550,24 @@ const Index = ({
                                                 : "bg-white text-gray-800"
                                             }`}
                                     >
-                                        <div className="text-sm sm:text-base font-medium break-words">{msg.text}</div>
-                                        <div className={`text-xs mt-1 sm:mt-2 ${msg.from === "001" ? "text-purple-200" : "text-gray-500"}`}>
+                                        {msg.text && (
+                                            <div className="text-sm sm:text-base font-medium break-words whitespace-pre-wrap mb-2">
+                                                {msg.text}
+                                            </div>
+                                        )}
+
+                                        {msg.image && (
+                                            <div className="rounded-lg overflow-hidden">
+                                                <img
+                                                    src={msg.image || "/placeholder.svg"}
+                                                    alt="Shared content"
+                                                    className="max-w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-opacity"
+                                                    onClick={() => openImageFullScreen(msg.image)}
+                                                />
+                                            </div>
+                                        )}
+
+                                        <div className={`text-xs mt-2 ${msg.from === "001" ? "text-purple-200" : "text-gray-500"}`}>
                                             {msg.time}
                                         </div>
                                     </div>
@@ -301,24 +613,125 @@ const Index = ({
 
                 {/* Message Input */}
                 {activeChatUser && (
-                    <div className="p-3 sm:p-6 border-t border-purple-500/20 bg-gradient-to-r from-slate-800 to-purple-800">
-                        <div className="flex space-x-2 sm:space-x-4">
+                    <div
+                        className={`chat-input-area p-3 sm:p-6 border-t border-purple-500/20 bg-gradient-to-r from-slate-800 to-purple-800 ${isDragOver ? "bg-purple-600/20" : ""}`}
+                        onDragOver={handleDragOver}
+                        onDragLeave={handleDragLeave}
+                        onDrop={handleDrop}
+                    >
+                        {selectedImage && (
+                            <div className="mb-4 p-3 bg-slate-700/50 rounded-xl border border-purple-500/30">
+                                <div className="flex items-start space-x-3">
+                                    <div className="relative">
+                                        <img
+                                            src={selectedImage || "/placeholder.svg"}
+                                            alt="Preview"
+                                            className="max-h-32 max-w-32 rounded-lg shadow-md object-cover"
+                                        />
+                                        <button
+                                            onClick={removeSelectedImage}
+                                            className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 shadow-lg transition-colors"
+                                            title="Remove image"
+                                        >
+                                            <X size={12} />
+                                        </button>
+                                    </div>
+                                    <div className="flex-1 text-sm text-gray-300">
+                                        <p className="font-medium text-white mb-1">Image ready to send</p>
+                                        <p className="text-xs text-gray-400">Click the remove button to cancel or send button to share</p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {isDragOver && (
+                            <div className="absolute inset-0 bg-purple-600/20 border-2 border-dashed border-purple-400 rounded-xl flex items-center justify-center z-10">
+                                <div className="text-center text-white">
+                                    <ImageIcon size={48} className="mx-auto mb-2 text-purple-300" />
+                                    <p className="text-lg font-semibold">Drop image here</p>
+                                    <p className="text-sm text-purple-200">Release to upload</p>
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="flex space-x-2 sm:space-x-4 relative">
                             <input
-                                type="text"
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleFileInputChange}
+                                className="hidden"
+                                id="image-upload"
+                                disabled={!isConnected}
+                            />
+                            <label
+                                htmlFor="image-upload"
+                                className={`cursor-pointer p-2 rounded-lg transition-all duration-200 ${isConnected
+                                        ? "text-purple-300 hover:text-white hover:bg-purple-600/20"
+                                        : "text-gray-500 cursor-not-allowed"
+                                    }`}
+                                title="Upload image (or paste with Ctrl+V)"
+                            >
+                                <ImageIcon size={20} />
+                            </label>
+
+                            <div className="relative" ref={emojiPickerRef}>
+                                <button
+                                    onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                                    className={`p-2 rounded-lg transition-all duration-200 ${isConnected
+                                            ? "text-purple-300 hover:text-white hover:bg-purple-600/20"
+                                            : "text-gray-500 cursor-not-allowed"
+                                        }`}
+                                    title="Add emoji"
+                                    disabled={!isConnected}
+                                >
+                                    <Smile size={20} />
+                                </button>
+
+                                {showEmojiPicker && (
+                                    <div className="absolute bottom-full left-0 mb-2 bg-slate-800 border border-purple-500/30 rounded-xl shadow-2xl p-4 w-80 max-h-64 overflow-y-auto z-50">
+                                        <div className="grid grid-cols-8 gap-2">
+                                            {commonEmojis.map((emoji, index) => (
+                                                <button
+                                                    key={index}
+                                                    onClick={() => insertEmoji(emoji)}
+                                                    className="text-2xl hover:bg-purple-600/20 rounded-lg p-2 transition-colors"
+                                                    title={`Add ${emoji}`}
+                                                >
+                                                    {emoji}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+
+                            <textarea
+                                ref={textareaRef}
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)}
-                                onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                                placeholder="Type your message..."
-                                className="flex-1 bg-slate-700 text-white border border-purple-500/30 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400 text-sm sm:text-base"
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter" && !e.shiftKey) {
+                                        e.preventDefault()
+                                        sendMessage()
+                                    }
+                                }}
+                                placeholder="Type your message... (Ctrl+V to paste images)"
+                                className="flex-1 bg-slate-700 text-white border border-purple-500/30 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-4 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent placeholder-gray-400 text-sm sm:text-base resize-none"
                                 disabled={!isConnected}
+                                rows={2}
                             />
                             <button
                                 onClick={sendMessage}
-                                disabled={!newMessage.trim() || !isConnected}
+                                disabled={(!newMessage.trim() && !selectedImage) || !isConnected}
                                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 text-white px-4 sm:px-8 py-2 sm:py-4 rounded-xl sm:rounded-2xl transition-all duration-200 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-105 disabled:scale-100"
                             >
                                 <Send size={16} className="sm:w-5 sm:h-5" />
                             </button>
+                        </div>
+
+                        <div className="mt-2 text-xs text-gray-400 text-center">
+                            💡 Tip: Drag & drop images, paste with Ctrl+V, click 📷 to upload, or 😊 for emojis
                         </div>
                     </div>
                 )}
@@ -327,4 +740,4 @@ const Index = ({
     )
 }
 
-export default Index
+export default ChatInterface

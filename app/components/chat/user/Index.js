@@ -1,9 +1,12 @@
 "use client"
-import { Minus, Send, Headphones, MessageCircle, Zap, Wifi, WifiOff } from "lucide-react"
+import { Minus, Send, Headphones, MessageCircle, Zap, Wifi, WifiOff, ImageIcon, Smile, X } from "lucide-react"
 import { FaWhatsapp } from "react-icons/fa"
 import MessageTone from "./MessageTune"
+import { useState, useRef, useEffect } from "react"
 
-const Index = ({
+const UserChatEnhanced = ({
+    selectedImage,
+    setSelectedImage,
     username,
     setIsChatOpen,
     onMinimize,
@@ -18,6 +21,271 @@ const Index = ({
 }) => {
     const whatsappNumber = phone.replace(/\D/g, "")
     const unseenMessages = (messages["001"] || []).filter((msg) => !msg.seen).length
+
+    const [isDragOver, setIsDragOver] = useState(false)
+    const [showEmojiPicker, setShowEmojiPicker] = useState(false)
+    const [fullScreenImage, setFullScreenImage] = useState(null)
+
+    const handleImageChange = (file) => {
+        if (file && file.type.startsWith("image/")) {
+            if (file.size > 5 * 1024 * 1024) {
+                alert("Image size should be less than 5MB")
+                return
+            }
+
+            const reader = new FileReader()
+            reader.onload = () => setSelectedImage(reader.result)
+            reader.readAsDataURL(file)
+        }
+    }
+
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0]
+        handleImageChange(file)
+    }
+
+    const fileInputRef = useRef(null)
+    const textareaRef = useRef(null)
+    const emojiPickerRef = useRef(null)
+
+    const commonEmojis = [
+        "😀",
+        "😃",
+        "😄",
+        "😁",
+        "😆",
+        "😅",
+        "😂",
+        "🤣",
+        "😊",
+        "😇",
+        "🙂",
+        "🙃",
+        "😉",
+        "😌",
+        "😍",
+        "🥰",
+        "😘",
+        "😗",
+        "😙",
+        "😚",
+        "😋",
+        "😛",
+        "😝",
+        "😜",
+        "🤪",
+        "🤨",
+        "🧐",
+        "🤓",
+        "😎",
+        "🤩",
+        "🥳",
+        "😏",
+        "😒",
+        "😞",
+        "😔",
+        "😟",
+        "😕",
+        "🙁",
+        "☹️",
+        "😣",
+        "😖",
+        "😫",
+        "😩",
+        "🥺",
+        "😢",
+        "😭",
+        "😤",
+        "😠",
+        "😡",
+        "🤬",
+        "🤯",
+        "😳",
+        "🥵",
+        "🥶",
+        "😱",
+        "😨",
+        "😰",
+        "😥",
+        "😓",
+        "🤗",
+        "🤔",
+        "🤭",
+        "🤫",
+        "🤥",
+        "😶",
+        "😐",
+        "😑",
+        "😬",
+        "🙄",
+        "😯",
+        "😦",
+        "😧",
+        "😮",
+        "😲",
+        "🥱",
+        "😴",
+        "🤤",
+        "😪",
+        "😵",
+        "🤐",
+        "🥴",
+        "🤢",
+        "🤮",
+        "🤧",
+        "😷",
+        "🤒",
+        "🤕",
+        "🤑",
+        "🤠",
+        "😈",
+        "👿",
+        "👹",
+        "👺",
+        "🤡",
+        "💩",
+        "👻",
+        "💀",
+        "☠️",
+        "👽",
+        "👾",
+        "🤖",
+        "🎃",
+        "😺",
+        "😸",
+        "😹",
+        "😻",
+        "😼",
+        "😽",
+        "🙀",
+        "😿",
+        "😾",
+        "👋",
+        "🤚",
+        "🖐️",
+        "✋",
+        "🖖",
+        "👌",
+        "🤏",
+        "✌️",
+        "🤞",
+        "🤟",
+        "🤘",
+        "🤙",
+        "👈",
+        "👉",
+        "👆",
+        "🖕",
+        "👇",
+    ]
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+        setIsDragOver(true)
+    }
+
+    const handleDragLeave = (e) => {
+        e.preventDefault()
+        setIsDragOver(false)
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        setIsDragOver(false)
+        const files = Array.from(e.dataTransfer.files)
+        const imageFile = files.find((file) => file.type.startsWith("image/"))
+        if (imageFile) {
+            if (imageFile.size > 5 * 1024 * 1024) {
+                alert("Image size should be less than 5MB")
+                return
+            }
+            const reader = new FileReader()
+            reader.onload = (e) => setSelectedImage(e.target.result)
+            reader.readAsDataURL(imageFile)
+        }
+    }
+
+    const removeSelectedImage = () => {
+        setSelectedImage(null)
+        if (fileInputRef.current) {
+            fileInputRef.current.value = ""
+        }
+    }
+
+    const insertEmoji = (emoji) => {
+        const textarea = textareaRef.current
+        if (textarea) {
+            const start = textarea.selectionStart
+            const end = textarea.selectionEnd
+            const newText = newMessage.slice(0, start) + emoji + newMessage.slice(end)
+            setNewMessage(newText)
+
+            setTimeout(() => {
+                textarea.focus()
+                textarea.setSelectionRange(start + emoji.length, start + emoji.length)
+            }, 0)
+        } else {
+            setNewMessage((prev) => prev + emoji)
+        }
+        setShowEmojiPicker(false)
+    }
+
+    const openImageFullScreen = (imageSrc) => {
+        setFullScreenImage(imageSrc)
+    }
+
+    const closeFullScreenImage = () => {
+        setFullScreenImage(null)
+    }
+
+    const handleSendMessage = () => {
+        if (selectedImage) {
+            // Send message with image
+            sendMessage(newMessage.trim(), selectedImage)
+            setSelectedImage(null)
+            if (fileInputRef.current) {
+                fileInputRef.current.value = ""
+            }
+        } else if (newMessage.trim()) {
+            // Send text message
+            sendMessage(newMessage.trim())
+        }
+    }
+
+    useEffect(() => {
+        const handlePaste = (e) => {
+            if (textareaRef.current && document.activeElement === textareaRef.current) {
+                const items = Array.from(e.clipboardData.items)
+                const imageItem = items.find((item) => item.type.startsWith("image/"))
+
+                if (imageItem) {
+                    e.preventDefault()
+                    const file = imageItem.getAsFile()
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert("Image size should be less than 5MB")
+                        return
+                    }
+                    const reader = new FileReader()
+                    reader.onload = (e) => setSelectedImage(e.target.result)
+                    reader.readAsDataURL(file)
+                }
+            }
+        }
+
+        document.addEventListener("paste", handlePaste)
+        return () => document.removeEventListener("paste", handlePaste)
+    }, [])
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+                setShowEmojiPicker(false)
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside)
+        return () => document.removeEventListener("mousedown", handleClickOutside)
+    }, [])
 
     return (
         <>
@@ -120,11 +388,27 @@ const Index = ({
                                 <div key={idx} className={`flex ${msg.from === "001" ? "justify-start" : "justify-end"}`}>
                                     <div
                                         className={`max-w-[85%] sm:max-w-xs px-3 sm:px-5 py-2 sm:py-3 rounded-2xl shadow-lg ${msg.from === "001"
-                                                ? "bg-white border border-gray-200 text-gray-800"
-                                                : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
+                                            ? "bg-white border border-gray-200 text-gray-800"
+                                            : "bg-gradient-to-r from-emerald-600 to-teal-600 text-white"
                                             }`}
                                     >
-                                        <div className="text-sm sm:text-base font-medium break-words">{msg.text}</div>
+                                        {msg.text && (
+                                            <div className="text-sm sm:text-base font-medium break-words whitespace-pre-wrap mb-2">
+                                                {msg.text}
+                                            </div>
+                                        )}
+
+                                        {msg.image && (
+                                            <div className="rounded-lg overflow-hidden">
+                                                <img
+                                                    src={msg.image || "/placeholder.svg"}
+                                                    alt="Shared content"
+                                                    className="max-w-full h-auto rounded-lg shadow-md cursor-pointer hover:opacity-90 transition-opacity"
+                                                    onClick={() => openImageFullScreen(msg.image)}
+                                                />
+                                            </div>
+                                        )}
+
                                         <div
                                             className={`text-xs mt-1 sm:mt-2 ${msg.from === "001" ? "text-gray-500" : "text-emerald-100"}`}
                                         >
@@ -157,26 +441,127 @@ const Index = ({
                             <div ref={messagesEndRef} />
                         </div>
 
-                        {/* Enhanced Input Area */}
-                        <div className="p-3 sm:p-6 border-t border-gray-200 bg-white">
-                            <div className="flex space-x-2 sm:space-x-3">
+                        <div
+                            className={`p-3 sm:p-6 border-t border-gray-200 bg-white relative ${isDragOver ? "bg-emerald-50" : ""}`}
+                            onDragOver={handleDragOver}
+                            onDragLeave={handleDragLeave}
+                            onDrop={handleDrop}
+                        >
+                            {selectedImage && (
+                                <div className="mb-4 p-3 bg-gray-50 rounded-xl border border-gray-200">
+                                    <div className="flex items-start space-x-3">
+                                        <div className="relative">
+                                            <img
+                                                src={selectedImage || "/placeholder.svg"}
+                                                alt="Preview"
+                                                className="max-h-32 max-w-32 rounded-lg shadow-md object-cover"
+                                            />
+                                            <button
+                                                onClick={removeSelectedImage}
+                                                className="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full p-1 shadow-lg transition-colors"
+                                                title="Remove image"
+                                            >
+                                                <X size={12} />
+                                            </button>
+                                        </div>
+                                        <div className="flex-1 text-sm text-gray-600">
+                                            <p className="font-medium text-gray-800 mb-1">Image ready to send</p>
+                                            <p className="text-xs text-gray-500">Click the remove button to cancel or send button to share</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {isDragOver && (
+                                <div className="absolute inset-0 bg-emerald-100/80 border-2 border-dashed border-emerald-400 rounded-xl flex items-center justify-center z-10">
+                                    <div className="text-center text-emerald-700">
+                                        <ImageIcon size={48} className="mx-auto mb-2 text-emerald-500" />
+                                        <p className="text-lg font-semibold">Drop image here</p>
+                                        <p className="text-sm text-emerald-600">Release to upload</p>
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="flex space-x-2 sm:space-x-3 relative">
                                 <input
-                                    type="text"
-                                    value={newMessage}
-                                    onChange={(e) => setNewMessage(e.target.value)}
-                                    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                                    placeholder={isConnected ? "Type your message..." : "Reconnecting..."}
-                                    className="flex-1 border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 sm:focus:ring-4 focus:ring-emerald-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-800 placeholder-gray-400 transition-all duration-200 outline-none disabled:bg-gray-100 disabled:cursor-not-allowed"
+                                    ref={fileInputRef}
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileInputChange}
+                                    className="hidden"
+                                    id="image-upload"
                                     disabled={!isConnected}
                                 />
+                                <label
+                                    htmlFor="image-upload"
+                                    className={`cursor-pointer p-2 rounded-lg transition-all duration-200 ${isConnected
+                                        ? "text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
+                                        : "text-gray-400 cursor-not-allowed"
+                                        }`}
+                                    title="Upload image (or paste with Ctrl+V)"
+                                >
+                                    <ImageIcon size={20} />
+                                </label>
+
+                                <div className="relative" ref={emojiPickerRef}>
+                                    <button
+                                        onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                                        className={`p-2 rounded-lg transition-all duration-200 ${isConnected
+                                            ? "text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50"
+                                            : "text-gray-400 cursor-not-allowed"
+                                            }`}
+                                        title="Add emoji"
+                                        disabled={!isConnected}
+                                    >
+                                        <Smile size={20} />
+                                    </button>
+
+                                    {showEmojiPicker && (
+                                        <div className="absolute bottom-full left-0 mb-2 bg-white border border-gray-200 rounded-xl shadow-2xl p-4 w-80 max-h-64 overflow-y-auto z-50">
+                                            <div className="grid grid-cols-8 gap-2">
+                                                {commonEmojis.map((emoji, index) => (
+                                                    <button
+                                                        key={index}
+                                                        onClick={() => insertEmoji(emoji)}
+                                                        className="text-2xl hover:bg-emerald-50 rounded-lg p-2 transition-colors"
+                                                        title={`Add ${emoji}`}
+                                                    >
+                                                        {emoji}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <textarea
+                                    ref={textareaRef}
+                                    value={newMessage}
+                                    onChange={(e) => setNewMessage(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" && !e.shiftKey) {
+                                            e.preventDefault()
+                                            handleSendMessage()
+                                        }
+                                    }}
+                                    placeholder="Type your message... (Ctrl+V to paste images)"
+                                    className="flex-1 border-2 border-gray-200 focus:border-emerald-500 focus:ring-2 sm:focus:ring-4 focus:ring-emerald-100 rounded-xl sm:rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base text-gray-800 placeholder-gray-400 transition-all duration-200 outline-none disabled:bg-gray-100 disabled:cursor-not-allowed resize-none"
+                                    disabled={!isConnected}
+                                    rows={2}
+                                />
                                 <button
-                                    onClick={sendMessage}
-                                    disabled={!newMessage.trim() || !isConnected}
+                                    onClick={handleSendMessage}
+                                    disabled={(!newMessage.trim() && !selectedImage) || !isConnected}
                                     className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 disabled:from-gray-300 disabled:to-gray-400 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:scale-100 disabled:cursor-not-allowed"
                                 >
                                     <Send size={16} className="sm:w-5 sm:h-5" />
                                 </button>
                             </div>
+
+                            <div className="mt-2 text-xs text-gray-500 text-center">
+                                💡 Tip: Drag & drop images, paste with Ctrl+V, click 📷 to upload, or 😊 for emojis
+                            </div>
+
                             {!isConnected && (
                                 <div className="mt-2 text-center">
                                     <span className="text-xs text-orange-600 bg-orange-100 px-2 sm:px-3 py-1 rounded-full">
@@ -188,8 +573,31 @@ const Index = ({
                     </div>
                 </div>
             </div>
+
+            {fullScreenImage && (
+                <div
+                    className="fixed inset-0 bg-black/90 flex items-center justify-center z-[60]"
+                    onClick={closeFullScreenImage}
+                >
+                    <div className="relative max-w-full max-h-full p-4">
+                        <img
+                            src={fullScreenImage || "/placeholder.svg"}
+                            alt="Full screen view"
+                            className="max-w-full max-h-full object-contain rounded-lg"
+                            onClick={(e) => e.stopPropagation()}
+                        />
+                        <button
+                            onClick={closeFullScreenImage}
+                            className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                            title="Close"
+                        >
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+            )}
         </>
     )
 }
 
-export default Index
+export default UserChatEnhanced
