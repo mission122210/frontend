@@ -1428,7 +1428,7 @@ const initialComments = {
             id: 1,
             userId: 9, // Nina Patel
             text: "I was a bit unsure about the $100 thing, but now that I understand it’s just a system requirement, it makes sense. I didn’t have to add the full amount either, most of it came from the training phase. I’ve already withdrawn today’s earnings. I earned $200.44 and successfully withdrew it.",
-            images: ["/p1.jpg", "/p2.jpg"],
+            images: ["/p3.jpg", "/p4.jpg", "/p1.jpg", "/p2.jpg"],
             timestamp: "6 hours ago",
             likes: 20,
             likedByUser: false,
@@ -2284,7 +2284,7 @@ const Index = () => {
                                         key={index}
                                         src={image}
                                         alt={`Comment image ${index + 1}`}
-                                        className="max-h-85 w-auto rounded-md object-contain flex-shrink-0"
+                                        className="max-h-110 w-auto rounded-md object-contain flex-shrink-0"
                                     />
                                 ))}
                             </div>
