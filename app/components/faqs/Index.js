@@ -2186,15 +2186,15 @@ const Index = () => {
         setShowNameInput((prev) => ({ ...prev, [faqId]: false }))
     }
 
-    const handleAddReply = (faqId, commentId) => {
-        if (!replyText.trim()) return
+    const handleAddReply = (faqId, commentId, pushReply) => {
+        if (!pushReply.trim()) return
 
         const newReply = {
             id: Date.now(),
             userId: Date.now(),
             userName: "You", // For replies, we can use "You" or ask for name again
             avatar: "YU",
-            text: replyText.trim(),
+            text: pushReply.trim(),
             timestamp: "Just now",
             likes: 0,
             likedByUser: false,
@@ -2251,6 +2251,7 @@ const Index = () => {
         const displayName = isNewUser ? comment.userName : user?.name
         const displayAvatar = isNewUser ? comment.avatar : user?.avatar
         const isVerified = isNewUser ? false : user?.verified
+        const [testReply, setTestReply] = useState("")
 
         return (
             <div className={`${isReply ? "ml-8 mt-3" : "mb-4"} bg-gray-50 rounded-lg p-4`}>
@@ -2313,14 +2314,14 @@ const Index = () => {
                             <div className="mt-3 flex space-x-2">
                                 <input
                                     type="text"
-                                    value={replyText}
-                                    onChange={(e) => setReplyText(e.target.value)}
+                                    value={testReply}
+                                    onChange={(e) => setTestReply(e.target.value)}
                                     placeholder="Write a reply..."
                                     className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-                                    onKeyPress={(e) => e.key === "Enter" && handleAddReply(faqId, comment.id)}
+
                                 />
                                 <button
-                                    onClick={() => handleAddReply(faqId, comment.id)}
+                                    onClick={() => handleAddReply(faqId, comment.id, testReply)}
                                     className="px-3 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
                                 >
                                     <Send size={14} />
