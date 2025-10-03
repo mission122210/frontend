@@ -5,7 +5,7 @@ import AskName from "./askname/Index"
 import Admin from "./admin/Index"
 import User from "./user/Index"
 
-const socket = io("http://localhost:3001", {
+const socket = io("https://superb-ulrikaumeko-master122-18c28fbd.koyeb.app", {
   autoConnect: false,
   reconnection: true,
   reconnectionAttempts: 5,
