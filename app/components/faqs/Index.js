@@ -9,7 +9,7 @@ const faqData = [
         refId: "products-optimization-job",
         question: "What is a Products Optimization job and who can do it?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     A <strong>Products Optimization job</strong> involves improving the visibility and ranking of products listed
                     on platforms like Amazon and eBay. The goal is to enhance product performance using real data, which leads to
@@ -17,7 +17,7 @@ const faqData = [
                 </p>
                 <p>
                     This job is powered by AI, but requires crucial{" "}
-                    <span className="font-semibold text-emerald-700">human involvement</span> for authenticity and effectiveness.
+                    <span className="font-semibold text-emerald-400">human involvement</span> for authenticity and effectiveness.
                 </p>
                 <p>
                     <span className="font-semibold">Who can do it?</span> You don't need to be an SEO expert. Anyone with a mobile
@@ -31,7 +31,7 @@ const faqData = [
                     <li>No personal information needed</li>
                 </ul>
                 <p>
-                    <span className="font-semibold text-emerald-700">Why is human involvement important?</span> AI can automate
+                    <span className="font-semibold text-emerald-400">Why is human involvement important?</span> AI can automate
                     many tasks, but platforms like Amazon and eBay require genuine human signals to ensure the process is not
                     manipulated by bots. Human interaction provides:
                 </p>
@@ -41,14 +41,14 @@ const faqData = [
                     <li>Verification that AI cannot fake</li>
                 </ul>
                 <p>
-                    <em className="text-sm text-gray-600">
+                    <em className="text-sm text-gray-400">
                         For example, when a product is optimized through AI alone, it may lack the human touch needed to pass
                         platform authenticity checks. Your participation ensures those checks are passed, making the product rank
                         higher and perform better.
                     </em>
                 </p>
                 <p>
-                    <strong className="text-emerald-700">Common Concern:</strong> "If I'm not buying or using a product, how can I
+                    <strong className="text-emerald-400">Common Concern:</strong> "If I'm not buying or using a product, how can I
                     give feedback or help promote it without lying?"
                 </p>
                 <p>
@@ -58,48 +58,49 @@ const faqData = [
                     platforms. It's <span className="font-semibold">completely ethical</span> and similar to how digital marketers
                     test user behavior to improve online visibility.
                 </p>
-                <p>
-                    Our platform, <strong>Nexxen</strong>, partners with trusted merchants to manage and optimize their products.
-                    As a Products Optimizer, you'll help them improve sales and visibility, and earn a daily salary plus
-                    commission.
-                </p>
             </div>
         ),
-        category: "Products Optimization Job Role",
+        category: "Job Overview",
     },
     {
         id: 2,
-        refId: "salary-and-commission",
-        question: "How does salary and commission work in the Products Optimization job?",
+        refId: "how-it-works",
+        question: "How does the job work?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p>
-                    Your earnings in the <strong>Products Optimization job</strong> are based on a combination of a{" "}
-                    <span className="font-semibold text-emerald-700">fixed base salary</span> and a{" "}
-                    <span className="font-semibold text-emerald-700">performance-based commission</span>. Both of these depend on
-                    your current <strong>VIP level</strong> within the platform.
-                </p>
-                <p>
-                    The higher your VIP level, the more product sets you optimize per day, and the higher your salary becomes.
-                </p>
-                <div className="bg-gray-50 border border-emerald-200 rounded-md p-4">
-                    <h4 className="text-emerald-700 font-semibold mb-2">📊 VIP Levels & Daily Earnings</h4>
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+                <p>The job is simple and requires no technical skills. Here's how it works:</p>
+                <ol className="list-decimal pl-6 space-y-2">
+                    <li>
+                        <strong>Sign Up:</strong> Register with your WhatsApp number and get instant access to the platform.
+                    </li>
+                    <li>
+                        <strong>Receive Tasks:</strong> You'll receive product optimization tasks daily based on your VIP level.
+                    </li>
+                    <li>
+                        <strong>Complete Tasks:</strong> Follow simple instructions to interact with products (view, click, search).
+                    </li>
+                    <li>
+                        <strong>Get Paid:</strong> Earn commissions instantly after completing each task set.
+                    </li>
+                </ol>
+                <div className="bg-gray-800 border border-emerald-300 rounded-md p-4">
+                    <h4 className="text-emerald-400 font-semibold mb-2">📊 VIP Levels & Daily Earnings</h4>
                     <ul className="list-disc pl-6 space-y-1">
                         <li>
                             <strong>VIP Level 1:</strong> 3 sets/day &mdash;{" "}
-                            <span className="text-emerald-600 font-semibold">$50 base salary</span>
+                            <span className="text-emerald-400 font-semibold">$50 base salary</span>
                         </li>
                         <li>
                             <strong>VIP Level 2:</strong> 4 sets/day &mdash;{" "}
-                            <span className="text-emerald-600 font-semibold">$200 base salary</span>
+                            <span className="text-emerald-400 font-semibold">$200 base salary</span>
                         </li>
                         <li>
                             <strong>VIP Level 3:</strong> 5 sets/day &mdash;{" "}
-                            <span className="text-emerald-600 font-semibold">$500 base salary</span>
+                            <span className="text-emerald-400 font-semibold">$500 base salary</span>
                         </li>
                         <li>
                             <strong>VIP Level 4:</strong> 6 sets/day &mdash;{" "}
-                            <span className="text-emerald-600 font-semibold">$1000 base salary</span>
+                            <span className="text-emerald-400 font-semibold">$1000 base salary</span>
                         </li>
                     </ul>
                 </div>
@@ -108,27 +109,23 @@ const faqData = [
                     on the performance of the products you've helped optimize. The more sets you complete and the better the
                     results, the more you earn.
                 </p>
-                <p className="italic text-sm text-gray-600">
+                <p className="italic text-sm text-gray-400">
                     For example, a user at VIP Level 2 optimizing 4 sets per day can earn a $200 base salary plus additional
-                    commissions depending on traffic and product engagement.
-                </p>
-                <p>
-                    This system is designed to reward consistency, performance, and growth. As you move up the VIP levels, your
-                    daily workload increases slightly, but so does your earning potential.
+                    commissions based on product performance.
                 </p>
             </div>
         ),
-        category: "Salary & Commission",
+        category: "How It Works",
     },
     {
         id: 3,
         refId: "getting-paid",
         question: "How will I get paid, and why is payment made through cryptocurrency?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     All payments for the <strong>Products Optimization job</strong> are made through{" "}
-                    <span className="font-semibold text-emerald-700">digital currency</span> such as{" "}
+                    <span className="font-semibold text-emerald-300">digital currency</span> such as{" "}
                     <strong>USDT, ETH, or BTC</strong>. You can receive your earnings directly into any trusted digital wallet,
                     including:
                 </p>
@@ -141,12 +138,12 @@ const faqData = [
                 </ul>
                 <p>
                     💡 <strong>Note:</strong> Payments are{" "}
-                    <span className="text-emerald-600 font-semibold">not sent in local currency</span> (such as INR, AED, or USD),
+                    <span className="text-emerald-300 font-semibold">not sent in local currency</span> (such as INR, AED, or USD),
                     and are not processed via local banks. This is because the company operates{" "}
                     <span className="font-semibold">globally</span> and uses a unified, secure system to manage cross-border
                     payments.
                 </p>
-                <div className="bg-amber-50 border-l-4 border-amber-300 p-4 rounded-md text-sm text-gray-700">
+                <div className="bg-amber-50 border-l-4 border-amber-300 p-4 rounded-md text-sm text-gray-300">
                     🌍 <strong>For Example:</strong> If you're working from the UK, the company cannot transfer pounds directly to
                     your local bank. Similarly, it can't send AED to Dubai or INR to India due to international financial
                     limitations. That's why digital currency is the most flexible and borderless solution.
@@ -154,7 +151,7 @@ const faqData = [
                 <p>
                     🔐 <strong>Is Crypto Safe?</strong> Yes! While it's true that many scams have been associated with crypto,
                     this platform uses{" "}
-                    <span className="font-semibold text-green-700">verified wallets and secure blockchain networks</span>. You are
+                    <span className="font-semibold text-green-300">verified wallets and secure blockchain networks</span>. You are
                     not investing in , you are only using it as a payment method. That makes it 100% safe.
                 </p>
                 <p>
@@ -167,7 +164,7 @@ const faqData = [
                     <strong>digital currency is replacing traditional payments</strong>. It's faster, borderless, and
                     tax-efficient. Major companies and governments are also exploring or implementing crypto-based solutions.
                 </p>
-                <p className="italic text-sm text-gray-600">
+                <p className="italic text-sm text-gray-400">
                     Think of it like receiving a digital , easy to store, easy to withdraw, and globally accessible.
                 </p>
                 <p>
@@ -183,12 +180,12 @@ const faqData = [
         refId: "job-discussion-over-whatsapp",
         question: "Is it unprofessional to discuss this job over WhatsApp?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                    That's a very valid, and we understand your concern. While email and portals are common for corporate
-                    jobs, for roles like <strong>Products Optimization</strong> that require real-time coordination and
-                    step-by-step training,{" "}
-                    <span className="font-semibold text-emerald-700">
+                    That's a very valid, and we understand your concern. While email and portals are common for corporate jobs,
+                    for roles like <strong>Products Optimization</strong> that require real-time coordination and step-by-step
+                    training,{" "}
+                    <span className="font-semibold text-emerald-300">
                         WhatsApp is actually one of the most effective communication tools
                     </span>
                     .
@@ -225,10 +222,10 @@ const faqData = [
                 </div>
                 <p>
                     ✨ In short, WhatsApp is not only easy and fast—but also secure, visual, and extremely convenient. It allows
-                    us to offer you a <span className="font-semibold text-emerald-700">personalized experience</span>, where
+                    us to offer you a <span className="font-semibold text-emerald-300">personalized experience</span>, where
                     you're never left confused or stuck.
                 </p>
-                <p className="italic text-sm text-gray-600">
+                <p className="italic text-sm text-gray-400">
                     So don't worry—this isn't unprofessional. It's a smarter, modern way of keeping you fully supported at every
                     step.
                 </p>
@@ -241,10 +238,10 @@ const faqData = [
         refId: "link-issues",
         question: "Why am I facing issues opening the platform link to create my account? What should I do?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     It's completely normal to encounter some warnings or errors when opening the platform link for the first time.{" "}
-                    <span className="font-semibold text-emerald-700">The link is highly secure and private</span>, because you
+                    <span className="font-semibold text-emerald-300">The link is highly secure and private</span>, because you
                     will be creating your working account here where you'll generate your earnings. So, sometimes it might not
                     open smoothly on a new device or network, and that's why you see these security warnings.
                 </p>
@@ -258,7 +255,7 @@ const faqData = [
                     <li>If it still doesn't work, disconnect from WiFi and try again.</li>
                     <li>
                         If the problem persists, contact your trainer right away.{" "}
-                        <span className="font-semibold text-emerald-700">
+                        <span className="font-semibold text-emerald-300">
                             Your trainer can provide you with a different secure link
                         </span>{" "}
                         to access the platform.
@@ -274,7 +271,7 @@ const faqData = [
                     the right help from your trainer, you'll get through easily.
                 </p>
                 <p>
-                    💡 <span className="font-semibold text-emerald-700">Why it's worth the effort:</span>
+                    💡 <span className="font-semibold text-emerald-300">Why it's worth the effort:</span>
                 </p>
                 <ul className="list-disc pl-6 space-y-1">
                     <li>🎉 You'll receive a $25 welcome bonus as soon as you create your account.</li>
@@ -288,7 +285,7 @@ const faqData = [
                     The training is designed to make everything simple and clear for you, and by completing the account setup, you
                     open doors to all these advantages.
                 </p>
-                <p className="italic text-sm text-gray-600">
+                <p className="italic text-sm text-gray-400">
                     So relax, take your time, and cooperate with your trainer. We're here to help you every step of the way,
                     because your success is our success!
                 </p>
@@ -301,7 +298,7 @@ const faqData = [
         refId: "lucky-orders-and-negative-balance",
         question: "What are Lucky Orders and why does my balance show negative?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     <strong>What are Lucky Orders?</strong>
                     <br />
@@ -332,16 +329,16 @@ const faqData = [
                 </p>
                 <p>
                     Here's the difference: <br />
-                    In Nexxen's real system, Lucky Orders are rare and completely random, we can't control or assign them at
-                    will. Scammers, on the other hand, create fake systems where they hand out Lucky Orders anytime, which is a
-                    red flag.
+                    In Nexxen's real system, Lucky Orders are rare and completely random, we can't control or assign them at will.
+                    Scammers, on the other hand, create fake systems where they hand out Lucky Orders anytime, which is a red
+                    flag.
                 </p>
                 <p>
                     Our legal team is actively tracking and taking action against these scams. If you're unsure whether an order
                     is real, just click <strong>RECORDS</strong> on the bottom right of your dashboard and send a screenshot to
                     your trainer, They'll help you verify it.
                 </p>
-                <p className="italic text-sm text-gray-600">
+                <p className="italic text-sm text-gray-400">
                     <strong>Reminder:</strong> Don't get discouraged or confused by misinformation. Stay focused, cooperate with
                     your trainer, and always confirm before assuming anything. You could be just one real Lucky Order away from a
                     big commission!
@@ -356,17 +353,18 @@ const faqData = [
         refId: "initial-funds",
         question: "Do I need to add any funds to my wallet before starting this job?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     One of the most common questions new users ask is:{" "}
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-emerald-300">
                         "Why am I being asked to add money when I joined to earn, not spend?"
-                    </span>{" "}, and that's a very valid concern. So let us explain clearly and honestly.
+                    </span>{" "}
+                    , and that's a very valid concern. So let us explain clearly and honestly.
                 </p>
                 <p>
                     The job involves completing <strong>3 daily sets</strong> after your training is over. These are simple tasks
                     you'll complete from your personal account, and your daily earnings for these sets (at{" "}
-                    <span className="text-emerald-700 font-semibold">VIP Level 1</span>) usually range between{" "}
+                    <span className="text-emerald-300 font-semibold">VIP Level 1</span>) usually range between{" "}
                     <strong>$180 to $200</strong>.
                 </p>
                 <p>
@@ -376,7 +374,7 @@ const faqData = [
                 </p>
                 <p>
                     Now, here's the good part:{" "}
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-emerald-300">
                         New users are not expected to deposit this $100 upfront.
                     </span>{" "}
                     Instead, you go through a short training phase first. In this phase, a training account is created using your
@@ -398,13 +396,14 @@ const faqData = [
                 </ul>
                 <p>
                     As soon as you complete your sets,{" "}
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-emerald-300">
                         you withdraw not only your earnings but also these few bucks
-                    </span>{" "}, they're never taken from you. You're just holding them briefly, like moving money from one pocket to the
+                    </span>{" "}
+                    , they're never taken from you. You're just holding them briefly, like moving money from one pocket to the
                     other.
                 </p>
                 <p>
-                    💡 <span className="font-semibold text-emerald-700">So why is it worth it?</span>
+                    💡 <span className="font-semibold text-emerald-300">So why is it worth it?</span>
                 </p>
                 <ul className="list-disc pl-6 space-y-1">
                     <li>🚀 You start earning $180–$200 per day immediately after training.</li>
@@ -414,11 +413,11 @@ const faqData = [
                 </ul>
                 <p>
                     So don't let a small temporary hold stop you from unlocking a real daily income.{" "}
-                    <strong className="text-emerald-700">It's not a risk, it's a step forward.</strong>
+                    <strong className="text-emerald-300">It's not a risk, it's a step forward.</strong>
                 </p>
-                <p className="italic text-sm text-gray-600">
-                    Still confused? Don't worry, your trainer should be there with you to guide you through every step, and
-                    you'll never be alone in the process. Your success is our goal.
+                <p className="italic text-sm text-gray-400">
+                    Still confused? Don't worry, your trainer should be there with you to guide you through every step, and you'll
+                    never be alone in the process. Your success is our goal.
                 </p>
             </div>
         ),
@@ -429,7 +428,7 @@ const faqData = [
         refId: "cashapp-scam-warning",
         question: 'Why is Cash App showing warnings like "Scam Detected" when I try to send the first transaction?',
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     Great question, and you're definitely not the only one who's seen this. A lot of new users get worried when
                     Cash App shows messages like <span className="font-semibold text-red-600">"Scam Detected"</span> or{" "}
@@ -437,7 +436,7 @@ const faqData = [
                     transaction.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">But here's the truth:</span> These warnings are{" "}
+                    <span className="font-semibold text-emerald-300">But here's the truth:</span> These warnings are{" "}
                     <strong>completely normal</strong>, especially when you're sending Bitcoin for the first time, or even using
                     an address that's not in your frequent list.
                 </p>
@@ -457,7 +456,7 @@ const faqData = [
                     <li>✅ Even if you see the same warnings, go ahead, your transaction will process this time.</li>
                 </ul>
                 <p>
-                    <span className="font-semibold text-emerald-700">Should you ignore the warning?</span> Yes, in this context,
+                    <span className="font-semibold text-emerald-300">Should you ignore the warning?</span> Yes, in this context,
                     you can safely ignore it. You're not sending money to a stranger; you're completing a step your trainer has
                     guided you through, using the official Nexxen deposit process.
                 </p>
@@ -465,7 +464,7 @@ const faqData = [
                     The Cash App warning is just automated, it doesn't mean your transaction is unsafe. If anything ever goes
                     wrong, your trainer and our team are here to assist.
                 </p>
-                <p className="text-sm italic text-gray-600">
+                <p className="text-sm italic text-gray-400">
                     💡 If you'd still like additional reassurance, you can look up{" "}
                     <a
                         href="https://cash.app/help/us/en-us/6480-bitcoin-withdrawal-limitations"
@@ -475,12 +474,12 @@ const faqData = [
                     >
                         Cash App's official documentation
                     </a>{" "}
-                    about how they monitor BTC transactions, they clearly mention that they may block or warn on certain
-                    transfers just as a precaution.
+                    about how they monitor BTC transactions, they clearly mention that they may block or warn on certain transfers
+                    just as a precaution.
                 </p>
                 <p>
                     🧠 Bottom line?{" "}
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-emerald-300">
                         Trust your trainer, follow the official instructions, and stay calm.
                     </span>{" "}
                     These warnings are just digital speed bumps, they're there to protect you, not to stop you.
@@ -494,13 +493,13 @@ const faqData = [
         refId: "cashapp-bitcoin-buying-concerns",
         question: "Why do I feel scared or suspicious when buying Bitcoin on Cash App? Is it a scam?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     It's completely normal to feel a bit scared or suspicious when buying Bitcoin on Cash App, especially because
                     there's been a lot of news about Bitcoin scams lately.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">But here's the important truth:</span> Buying Bitcoin on Cash
+                    <span className="font-semibold text-emerald-300">But here's the important truth:</span> Buying Bitcoin on Cash
                     App is <strong>safe and secure</strong>. Cash App is a trusted digital wallet backed by Square, a publicly
                     traded company used by millions worldwide.
                 </p>
@@ -518,8 +517,7 @@ const faqData = [
                         ✅ They comply with strict financial regulations and anti-fraud systems to detect suspicious activity.
                     </li>
                     <li>
-                        ✅ Your Bitcoin purchase is recorded on the blockchain, a public, transparent ledger that anyone can
-                        verify.
+                        ✅ Your Bitcoin purchase is recorded on the blockchain, a public, transparent ledger that anyone can verify.
                     </li>
                     <li>✅ Millions of users worldwide have safely bought and sold Bitcoin through Cash App with no issues.</li>
                 </ul>
@@ -528,7 +526,7 @@ const faqData = [
                     remember, your trainer and Nexxen support are here to guide you step-by-step.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Pro tip:</span> You can also verify your Bitcoin holdings
+                    <span className="font-semibold text-emerald-300">Pro tip:</span> You can also verify your Bitcoin holdings
                     anytime using public blockchain explorers. This transparency is one of Bitcoin's biggest strengths, you can
                     prove your coins exist and belong to you.
                 </p>
@@ -537,7 +535,7 @@ const faqData = [
                     instructions carefully, stay informed, and reach out for help whenever you need it.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">
+                    <span className="font-semibold text-emerald-300">
                         We also understand that trusting a digital wallet is one thing, but trusting your guide and support team is
                         equally important.
                     </span>{" "}
@@ -545,7 +543,7 @@ const faqData = [
                     your experience is smooth, secure, and scam-free. You're never alone, we stand by your side to protect your
                     investment and answer any questions.
                 </p>
-                <p className="text-sm italic text-gray-600">
+                <p className="text-sm italic text-gray-400">
                     💡 For more reassurance, check out{" "}
                     <a
                         href="https://cash.app/help/us/en-us/6480-bitcoin-withdrawal-limitations"
@@ -558,7 +556,7 @@ const faqData = [
                     and their security features.
                 </p>
                 <p>
-                    🧠 <span className="font-semibold text-emerald-700">Bottom line?</span> Your doubts are normal, but the system
+                    🧠 <span className="font-semibold text-emerald-300">Bottom line?</span> Your doubts are normal, but the system
                     is designed to protect you. Trust the digital wallet, trust your trainer, and take one step at a time, you've
                     got this!
                 </p>
@@ -571,13 +569,13 @@ const faqData = [
         refId: "trainer-cannot-help-minimum-balance",
         question: "Can my trainer help me with the few dollars needed to complete the minimum balance or verification?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     It's totally normal to wonder why your trainer can't help you with the small amount needed to meet the minimum
                     balance, especially when it's just a few bucks. But there's a very important reason behind this rule.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">To be clear:</span> Trainers are{" "}
+                    <span className="font-semibold text-emerald-300">To be clear:</span> Trainers are{" "}
                     <strong>strictly not allowed</strong> to assist with funds related to meeting the minimum balance requirement,
                     even if it's just a few dollars.
                 </p>
@@ -597,15 +595,15 @@ const faqData = [
                     <li>✅ It ensures all members take full responsibility for their participation.</li>
                 </ul>
                 <p>
-                    If a trainer were to lend or send you that amount, even with good intentions, it would bypass the
-                    verification process, which defeats the purpose. That's why this rule exists and is non-negotiable.
+                    If a trainer were to lend or send you that amount, even with good intentions, it would bypass the verification
+                    process, which defeats the purpose. That's why this rule exists and is non-negotiable.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Bottom line:</span> Human verification is essential, and for
+                    <span className="font-semibold text-emerald-300">Bottom line:</span> Human verification is essential, and for
                     that reason, <strong>you must personally fund the minimum balance requirement</strong>. Trainers are here to
                     guide and support you, but they cannot handle or cover this step for you.
                 </p>
-                <p className="text-sm italic text-gray-600">
+                <p className="text-sm italic text-gray-400">
                     💡 This policy keeps the system fair, secure, and trustworthy for everyone involved. Once you complete this
                     step, your trainer will be fully ready to walk you through everything else.
                 </p>
@@ -618,17 +616,17 @@ const faqData = [
         refId: "no-money-hesitation-faq",
         question: "What if I don't even have a few dollars to get started? Is this job still for me?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     This is a question we hear a lot: <em>"I don't even have a few bucks right now."</em> And while it might sound
                     like a simple excuse, we take it seriously, because it's not really about the money. It's about mindset,
                     understanding, and belief in what's possible.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Let's be honest:</span> It's hard to believe that someone
-                    living in the U.S. truly can't access a few dollars, even just temporarily. What's more likely is that
-                    they're unsure about this opportunity, they don't yet trust the process, or they simply don't realize how
-                    powerful this job can be financially.
+                    <span className="font-semibold text-emerald-300">Let's be honest:</span> It's hard to believe that someone
+                    living in the U.S. truly can't access a few dollars, even just temporarily. What's more likely is that they're
+                    unsure about this opportunity, they don't yet trust the process, or they simply don't realize how powerful
+                    this job can be financially.
                 </p>
                 <p>And that's okay, we get it. Skepticism is normal at the start. But here's what we want you to realize:</p>
                 <ul className="list-disc pl-6 space-y-1">
@@ -650,9 +648,9 @@ const faqData = [
                     yet." And that's exactly where we want to help shift your mindset.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Think about it this way:</span> If you knew with confidence
-                    that putting in a small amount today would lead to $200 or more in your hands within days, wouldn't you
-                    figure out a way to come up with that?
+                    <span className="font-semibold text-emerald-300">Think about it this way:</span> If you knew with confidence
+                    that putting in a small amount today would lead to $200 or more in your hands within days, wouldn't you figure
+                    out a way to come up with that?
                 </p>
                 <p>
                     Most people would. And many do. Because once you realize the value of what's in front of you, that small
@@ -660,16 +658,16 @@ const faqData = [
                 </p>
                 <p>
                     <span className="font-semibold">Here's the truth:</span> That $200+ is already waiting for you. It's not a
-                    dream, it's not hype, it's just one step away. You just need to unlock it by completing this small but
-                    crucial setup.
+                    dream, it's not hype, it's just one step away. You just need to unlock it by completing this small but crucial
+                    setup.
                 </p>
                 <p>
-                    <span className="font-semibold text-emerald-700">Bottom line:</span> Don't let a few dollars today block
+                    <span className="font-semibold text-emerald-300">Bottom line:</span> Don't let a few dollars today block
                     hundreds, or even thousands, of dollars tomorrow. This is your chance to change your financial path. Be
                     resourceful, stay committed, and trust the process. You'll be amazed at what happens when you just take that
                     first step.
                 </p>
-                <p className="text-sm italic text-gray-600">
+                <p className="text-sm italic text-gray-400">
                     💡 Still unsure? Reach out to your trainer. They're here to guide you, answer your questions, and help you get
                     started the smart way.
                 </p>
@@ -682,7 +680,7 @@ const faqData = [
         refId: "how-to-reset-task-access-remaining-sets",
         question: "How do I reset my task and access the remaining sets?",
         answer: (
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                     If your task has been paused and you need to reset it to access the remaining sets, don't worry, the process
                     is easy and can be done in just a few steps, even if you've never used a digital wallet before.
@@ -721,9 +719,10 @@ const faqData = [
                     </li>
                 </ol>
                 <p>
-                    <span className="font-semibold text-emerald-700">That's it!</span> It's a simple one-time step to move forward, and if you ever need help, Nexxen support is here for you.
+                    <span className="font-semibold text-emerald-300">That's it!</span> It's a simple one-time step to move
+                    forward, and if you ever need help, Nexxen support is here for you.
                 </p>
-                <p className="text-sm italic text-gray-600">
+                <p className="text-sm italic text-gray-400">
                     💡 Tip: If you're not sure how to buy or send crypto, just let support know. They'll walk you through it one
                     step at a time.
                 </p>
@@ -795,7 +794,7 @@ const mockUsers = [
     { id: 58, name: "Vanessa Moore", avatar: "VM", verified: true },
     { id: 59, name: "Leo Fernandez", avatar: "LF", verified: false },
     { id: 60, name: "Amber Patel", avatar: "AP", verified: true },
-];
+]
 
 // Mock initial comments data
 const initialComments = {
@@ -1192,7 +1191,7 @@ const initialComments = {
                     timestamp: "2 hours ago",
                     likes: 4,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1210,7 +1209,7 @@ const initialComments = {
                     timestamp: "5 hours ago",
                     likes: 3,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1246,7 +1245,7 @@ const initialComments = {
                     timestamp: "25 minutes ago",
                     likes: 2,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1284,7 +1283,7 @@ const initialComments = {
                     timestamp: "2 hours ago",
                     likes: 5,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1311,7 +1310,7 @@ const initialComments = {
                     timestamp: "3 hours ago",
                     likes: 4,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1338,7 +1337,7 @@ const initialComments = {
                     timestamp: "4 hours ago",
                     likes: 6,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1374,7 +1373,7 @@ const initialComments = {
                     timestamp: "1 hour ago",
                     likes: 4,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1401,7 +1400,7 @@ const initialComments = {
                     timestamp: "4 hours ago",
                     likes: 5,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1421,7 +1420,7 @@ const initialComments = {
             likes: 10,
             likedByUser: false,
             replies: [],
-        }
+        },
     ],
     16: [
         {
@@ -1476,7 +1475,7 @@ const initialComments = {
                     timestamp: "3 hours ago",
                     likes: 4,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1503,7 +1502,7 @@ const initialComments = {
                     timestamp: "2 hours ago",
                     likes: 5,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1577,7 +1576,7 @@ const initialComments = {
             likes: 12,
             likedByUser: false,
             replies: [],
-        }
+        },
     ],
     17: [
         {
@@ -1604,7 +1603,7 @@ const initialComments = {
                     timestamp: "2 hours ago",
                     likes: 4,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1640,7 +1639,7 @@ const initialComments = {
                     timestamp: "1 hour ago",
                     likes: 5,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -1660,7 +1659,7 @@ const initialComments = {
             likes: 7,
             likedByUser: false,
             replies: [],
-        }
+        },
     ],
     18: [
         {
@@ -1723,7 +1722,7 @@ const initialComments = {
                     timestamp: "1 hour ago",
                     likes: 5,
                     likedByUser: false,
-                }
+                },
             ],
         },
         {
@@ -2128,16 +2127,16 @@ const Index = () => {
     }, [openFAQ])
 
     const toggleFAQ = (index) => {
-        setOpenFAQ((prevIndex) => (prevIndex === index ? null : index));
+        setOpenFAQ((prevIndex) => (prevIndex === index ? null : index))
 
         // Scroll to the top of the selected FAQ smoothly
-        const el = faqRefs.current[index];
+        const el = faqRefs.current[index]
         if (el) {
             setTimeout(() => {
-                el.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-            }, 100); // slight delay ensures expanded content does not shift scroll unexpectedly
+                el.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+            }, 100) // slight delay ensures expanded content does not shift scroll unexpectedly
         }
-    };
+    }
 
     const handleCopyLink = (refId, index) => {
         const link = `${window.location.origin}${window.location.pathname}#${refId}`
@@ -2254,7 +2253,7 @@ const Index = () => {
         const [testReply, setTestReply] = useState("")
 
         return (
-            <div className={`${isReply ? "ml-8 mt-3" : "mb-4"} bg-gray-50 rounded-lg p-4`}>
+            <div className={`${isReply ? "ml-8 mt-3" : "mb-4"} bg-gray-800 rounded-lg p-4`}>
                 <div className="flex items-start space-x-3">
                     <div className="flex-shrink-0">
                         <div className="w-8 h-8 bg-emerald-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">
@@ -2263,7 +2262,7 @@ const Index = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-2">
-                            <p className="text-sm font-semibold text-gray-900">{displayName}</p>
+                            <p className="text-sm font-semibold text-gray-100">{displayName}</p>
                             {isVerified && (
                                 <div className="w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
                                     <svg className="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -2275,15 +2274,15 @@ const Index = () => {
                                     </svg>
                                 </div>
                             )}
-                            <span className="text-xs text-gray-500">{comment.timestamp}</span>
+                            <span className="text-xs text-gray-400">{comment.timestamp}</span>
                         </div>
-                        <p className="mt-1 text-sm text-gray-700">{comment.text}</p>
+                        <p className="mt-1 text-sm text-gray-300">{comment.text}</p>
                         {comment.images && comment.images.length > 0 && (
                             <div className="mt-3 flex flex-wrap gap-3">
                                 {comment.images.map((image, index) => (
                                     <img
                                         key={index}
-                                        src={image}
+                                        src={image || "/placeholder.svg"}
                                         alt={`Comment image ${index + 1}`}
                                         className="max-h-110 w-auto rounded-md object-contain flex-shrink-0"
                                     />
@@ -2294,7 +2293,7 @@ const Index = () => {
                         <div className="mt-2 flex items-center space-x-4">
                             <button
                                 onClick={() => handleLikeComment(faqId, comment.id, isReply, parentCommentId)}
-                                className={`flex items-center space-x-1 text-xs ${comment.likedByUser ? "text-red-500" : "text-gray-500"} hover:text-red-500 transition-colors`}
+                                className={`flex items-center space-x-1 text-xs ${comment.likedByUser ? "text-red-500" : "text-gray-400"} hover:text-red-500 transition-colors`}
                             >
                                 <ThumbsUp size={14} className={comment.likedByUser ? "fill-current" : ""} />
                                 <span>{comment.likes}</span>
@@ -2302,7 +2301,7 @@ const Index = () => {
                             {!isReply && (
                                 <button
                                     onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
-                                    className="flex items-center space-x-1 text-xs text-gray-500 hover:text-emerald-500 transition-colors"
+                                    className="flex items-center space-x-1 text-xs text-gray-400 hover:text-emerald-400 transition-colors"
                                 >
                                     <MessageCircle size={14} />
                                     <span>Reply</span>
@@ -2317,12 +2316,11 @@ const Index = () => {
                                     value={testReply}
                                     onChange={(e) => setTestReply(e.target.value)}
                                     placeholder="Write a reply..."
-                                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-
+                                    className="flex-1 px-3 py-2 border border-gray-600 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent bg-gray-800 text-gray-100 placeholder-gray-500"
                                 />
                                 <button
                                     onClick={() => handleAddReply(faqId, comment.id, testReply)}
-                                    className="px-3 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                                    className="px-3 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-300 transition-colors"
                                 >
                                     <Send size={14} />
                                 </button>
@@ -2355,15 +2353,15 @@ const Index = () => {
                     key={faq.id}
                     id={faq.refId}
                     ref={(el) => (faqRefs.current[index] = el)}
-                    className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-emerald-200"
+                    className="bg-gray-900 rounded-2xl shadow-lg border border-gray-700 overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-emerald-600"
                 >
                     <button
                         onClick={() => toggleFAQ(index)}
-                        className="w-full px-8 py-6 text-left flex justify-between items-start hover:bg-gray-50 transition-colors duration-200"
+                        className="w-full px-8 py-6 text-left flex justify-between items-start hover:bg-gray-800 transition-colors duration-200"
                     >
                         <div className="flex-1">
                             <div className="flex items-center space-x-3 mb-2">
-                                <span className="bg-emerald-100 text-emerald-800 text-xs font-medium px-3 py-1 rounded-full">
+                                <span className="bg-emerald-900/50 text-emerald-400 text-xs font-medium px-3 py-1 rounded-full border border-emerald-300">
                                     {faq.category}
                                 </span>
                                 <button
@@ -2371,17 +2369,17 @@ const Index = () => {
                                         e.stopPropagation()
                                         handleCopyLink(faq.refId, index)
                                     }}
-                                    className="flex items-center text-emerald-600 hover:text-emerald-800 text-xs space-x-1"
+                                    className="flex items-center text-emerald-400 hover:text-emerald-300 text-xs space-x-1"
                                 >
                                     <Share2 size={16} />
                                     <span className="sr-only">Copy Link</span>
                                 </button>
-                                {copiedIndex === index && <span className="text-xs text-green-600 ml-1">Link Copied!</span>}
+                                {copiedIndex === index && <span className="text-xs text-green-400 ml-1">Link Copied!</span>}
                             </div>
-                            <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                            <h3 className="text-lg font-semibold text-gray-100 pr-4">{faq.question}</h3>
                         </div>
                         <ChevronDown
-                            className={`text-emerald-600 transition-transform duration-300 flex-shrink-0 ${openFAQ === index ? "rotate-180" : ""}`}
+                            className={`text-emerald-400 transition-transform duration-300 flex-shrink-0 ${openFAQ === index ? "rotate-180" : ""}`}
                             size={24}
                         />
                     </button>
@@ -2390,17 +2388,17 @@ const Index = () => {
                         className={`overflow-hidden transition-all duration-500 ${openFAQ === index ? "max-h-none opacity-100" : "max-h-0 opacity-0"}`}
                     >
                         <div className="px-8 pb-6">
-                            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-6 border-l-4 border-emerald-500 mb-6">
-                                <div className="text-gray-700 leading-relaxed text-base">{faq.answer}</div>
+                            <div className="bg-gradient-to-r from-emerald-900/30 to-teal-900/30 rounded-xl p-6 border-l-4 border-emerald-500 mb-6">
+                                <div className="text-gray-300 leading-relaxed text-base">answer{faq.answer}</div>
                             </div>
 
                             {/* Comments Section */}
-                            <div className="border-t border-gray-200 pt-6">
+                            <div className="border-t border-gray-700 pt-6">
                                 <div className="flex items-center justify-between mb-4">
-                                    <h4 className="text-lg font-semibold text-gray-900">
+                                    <h4 className="text-lg font-semibold text-gray-100">
                                         Community Reviews ({(comments[faq.id] || []).length})
                                     </h4>
-                                    <div className="flex items-center space-x-2 text-sm text-gray-500">
+                                    <div className="flex items-center space-x-2 text-sm text-gray-400">
                                         <Heart size={16} />
                                         <span>Share your experience</span>
                                     </div>
@@ -2412,7 +2410,7 @@ const Index = () => {
                                         <div className="flex items-center justify-center">
                                             <button
                                                 onClick={() => handleShowNameInput(faq.id)}
-                                                className="flex items-center space-x-2 px-6 py-3 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                                                className="flex items-center space-x-2 px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-300 transition-colors"
                                             >
                                                 <User size={18} />
                                                 <span>Write a Review</span>
@@ -2422,24 +2420,25 @@ const Index = () => {
                                         <div className="space-y-4">
                                             {/* Name Input */}
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Your Name</label>
                                                 <input
                                                     type="text"
                                                     value={userName[faq.id] || ""}
                                                     onChange={(e) => setUserName((prev) => ({ ...prev, [faq.id]: e.target.value }))}
                                                     placeholder="Enter your full name (e.g., Annie Corbin)"
-                                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                                                 />
                                             </div>
 
                                             {/* Comment Input */}
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 mb-2">Your Review</label>
+                                                <label className="block text-sm font-medium text-gray-300 mb-2">Your Review</label>
+                                                {/* Updated textarea background and text colors for dark theme */}
                                                 <textarea
                                                     value={newComment[faq.id] || ""}
                                                     onChange={(e) => setNewComment((prev) => ({ ...prev, [faq.id]: e.target.value }))}
                                                     placeholder="Share your thoughts about this FAQ..."
-                                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                                                    className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent text-gray-100 placeholder-gray-500"
                                                     rows="3"
                                                 />
                                             </div>
@@ -2451,14 +2450,14 @@ const Index = () => {
                                                         setNewComment((prev) => ({ ...prev, [faq.id]: "" }))
                                                         setUserName((prev) => ({ ...prev, [faq.id]: "" }))
                                                     }}
-                                                    className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                                                    className="px-4 py-2 text-gray-300 border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors bg-gray-900"
                                                 >
                                                     Cancel
                                                 </button>
                                                 <button
                                                     onClick={() => handleAddComment(faq.id)}
                                                     disabled={!newComment[faq.id]?.trim() || !userName[faq.id]?.trim()}
-                                                    className="px-4 py-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
+                                                    className="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-300 disabled:bg-gray-700 disabled:cursor-not-allowed transition-colors flex items-center space-x-2"
                                                 >
                                                     <Send size={16} />
                                                     <span>Post Review</span>
@@ -2468,15 +2467,15 @@ const Index = () => {
                                     )}
                                 </div>
 
-                                {/* Comments List */}
+                                {/* Display Comments */}
                                 <div className="space-y-4">
                                     {(comments[faq.id] || []).map((comment) => (
                                         <CommentComponent key={comment.id} comment={comment} faqId={faq.id} />
                                     ))}
 
                                     {(!comments[faq.id] || comments[faq.id].length === 0) && (
-                                        <div className="text-center py-8 text-gray-500">
-                                            <MessageCircle size={48} className="mx-auto mb-3 text-gray-300" />
+                                        <div className="text-center py-8 text-gray-400">
+                                            <MessageCircle size={48} className="mx-auto mb-3 text-gray-400" />
                                             <p>No reviews yet. Be the first to share your experience!</p>
                                         </div>
                                     )}
