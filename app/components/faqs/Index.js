@@ -2389,7 +2389,7 @@ const Index = () => {
                     >
                         <div className="px-8 pb-6">
                             <div className="bg-gradient-to-r from-emerald-900/30 to-teal-900/30 rounded-xl p-6 border-l-4 border-emerald-500 mb-6">
-                                <div className="text-gray-300 leading-relaxed text-base">answer{faq.answer}</div>
+                                <div className="text-gray-300 leading-relaxed text-base">{faq.answer}</div>
                             </div>
 
                             {/* Comments Section */}
