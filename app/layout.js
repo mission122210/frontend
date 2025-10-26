@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Nexxen FAQ",
   description: "Find quick answers to common questions about Nexxen’s services, support hours, team policies, and more. Get the help you need or connect with our customer support team directly.",
+  image: "/meta.webp"
 };
 
 export default function RootLayout({ children }) {
