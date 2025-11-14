@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { MessageCircle, Clock, Star, Users, Award, Sparkles } from "lucide-react"
+import { MessageCircle, Clock, Star, Users, Award, Sparkles, Copy } from "lucide-react"
 import Faqs from "@/app/components/faqs/Index"
 import ChatBox from "@/app/components/chat/Index"
 import Header from "@/app/components/header/Index"
@@ -11,6 +11,17 @@ import phone from "@/app/phone"
 
 export default function FAQPage() {
   const [isChatOpen, setIsChatOpen] = useState(false)
+
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyBitcoinAddress = () => {
+    const bitcoinAddress = "bc1q5u8knp7n8yt3jfxphjltstdjdvmwm6mx7rrwc7"
+
+    navigator.clipboard.writeText(bitcoinAddress).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-950 relative overflow-hidden text-gray-300">
@@ -57,15 +68,14 @@ export default function FAQPage() {
                 {[...Array(4)].map((_, i) => (
                   <div
                     key={i}
-                    className={`w-8 h-8 rounded-full border-2 border-gray-900 ${
-                      i === 0
-                        ? "bg-gradient-to-r from-purple-700 to-pink-700"
-                        : i === 1
+                    className={`w-8 h-8 rounded-full border-2 border-gray-900 ${i === 0
+                      ? "bg-gradient-to-r from-purple-700 to-pink-700"
+                      : i === 1
                         ? "bg-gradient-to-r from-blue-700 to-cyan-700"
                         : i === 2
-                        ? "bg-gradient-to-r from-emerald-700 to-teal-700"
-                        : "bg-gradient-to-r from-orange-700 to-red-700"
-                    }`}
+                          ? "bg-gradient-to-r from-emerald-700 to-teal-700"
+                          : "bg-gradient-to-r from-orange-700 to-red-700"
+                      }`}
                   ></div>
                 ))}
               </div>
@@ -116,6 +126,35 @@ export default function FAQPage() {
               <div className="text-gray-400 font-semibold">HR & IT Support</div>
               <div className="text-xs text-gray-500 mt-2">EST timezone</div>
             </div>
+          </div>
+        </div>
+
+        {/* Bitcoin Address Copy Section */}
+        <div className="mb-20 mx-auto max-w-2xl">
+          <div className="group relative bg-gray-900 rounded-3xl p-8 shadow-xl border border-gray-700 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-yellow-600 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <Copy size={32} className="text-white" />
+              </div>
+            </div>
+            <h3 className="text-center text-xl font-bold text-gray-100 mb-4">
+              Do you want to copy the deposit address?
+            </h3>
+            <button
+              onClick={handleCopyBitcoinAddress}
+              className="w-full bg-gradient-to-r from-yellow-600 to-orange-600 text-white hover:from-yellow-700 hover:to-orange-700 px-8 py-4 rounded-2xl font-bold text-lg shadow-lg hover:shadow-yellow-700/50 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <Copy size={20} />
+              Click me!
+            </button>
+            {copied && (
+              <p className="text-center text-sm text-green-400 font-semibold mt-3">
+                ✓ Address copied
+              </p>
+            )}
+            <p className="text-center text-sm text-gray-400 mt-4">
+              Deposit Address: <span className="text-yellow-400 font-mono text-xs">bc1q5u8knp7n8yt3jfxphjltstdjdvmwm6mx7rrwc7</span>
+            </p>
           </div>
         </div>
 
